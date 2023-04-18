@@ -1,10 +1,15 @@
-{ self, pkgs, system, config, hmUsers, lib, suites, ... }:
+{ inputs, hmProfiles, ... }:
 let username = "tianyaochou";
     email = "tianyaochou@fastmail.com";
 in
 {
+  home-manager.useGlobalPkgs = true;
+  home-manager.useUserPackages = true;
+  home-manager.extraSpecialArgs = { inherit inputs; profiles = hmProfiles; };
   home-manager.users.${username} =
-  { pkgs, suites, ... }: {
+  { pkgs, profiles, ... }: {
+    imports = (with profiles; [ shell git emacs ]);
+
     home.packages = with pkgs;
       [
         # Programming

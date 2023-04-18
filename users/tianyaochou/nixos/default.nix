@@ -10,4 +10,5 @@ in
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
   };
+  programs.fish.enable = true;
 }

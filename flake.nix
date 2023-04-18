@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-22.11";
+    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     # You can access packages and modules from different nixpkgs revs
     # at the same time. Here's an working example:
     nixpkgs-unstable.url = "github:nixos/nixpkgs/nixos-unstable";
@@ -14,6 +14,14 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     digga.url = "github:divnix/digga";
+    digga.inputs.nixlib.follows = "nixpkgs";
+    digga.inputs.darwin.follows = "darwin";
+    digga.inputs.home-manager.follows = "home-manager";
+
+    darwin.url = "github:LnL7/nix-darwin";
+    darwin.inputs.nixpkgs.follows = "nixpkgs";
+
+    nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -23,7 +31,7 @@
     # nix-colors.url = "github:misterio77/nix-colors";
   };
 
-  outputs = { self, nixpkgs, home-manager, digga, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -36,6 +44,7 @@
       hosts = digga.lib.rakeLeaves ./hosts;
       users = digga.lib.rakeLeaves ./users;
       profiles = digga.lib.rakeLeaves ./profiles;
+      hmProfiles = digga.lib.rakeLeaves ./home-manager/profiles;
     in
     rec {
       # Your custom packages
@@ -64,12 +73,24 @@
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = with hosts.nixos; {
         workstation = nixpkgs.lib.nixosSystem {
-          specialArgs = { inherit inputs outputs; };
+          specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
           modules = [
             home-manager.nixosModules.home-manager
             workstation
-          ] ++ (with profiles; [ server graphical ])
+          ] ++ (with profiles; [ nixos nix server graphical ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
+        };
+      };
+
+      darwinConfigurations = with hosts.darwin; {
+        Tianyaos-MBP = darwin.lib.darwinSystem {
+          system = "x86_64-darwin";
+          specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
+          modules = [
+            home-manager.darwinModules.home-manager
+            Tianyaos-MBP
+          ] ++ (with profiles; [ profiles.darwin nix ])
+            ++ (with users.tianyaochou; [ users.tianyaochou.darwin develop ]);
         };
       };
 

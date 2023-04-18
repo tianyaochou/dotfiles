@@ -6,4 +6,5 @@ let username = "tianyaochou"; in
     shell = pkgs.fish;
     home = /Users/${username};
   };
+  programs.fish.enable = true;
 }
