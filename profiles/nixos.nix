@@ -16,7 +16,6 @@
       gptfdisk
       iputils
       usbutils
-      pciutils
       utillinux
     ];
 

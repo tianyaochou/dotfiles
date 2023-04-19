@@ -77,7 +77,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             workstation
-          ] ++ (with profiles; [ profiles.nixos nix server graphical ])
+          ] ++ (with profiles; [ profiles.nixos nix server graphical utils ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
       };
@@ -89,7 +89,7 @@
           modules = [
             home-manager.darwinModules.home-manager
             Tianyaos-MBP
-          ] ++ (with profiles; [ profiles.darwin nix ])
+          ] ++ (with profiles; [ profiles.darwin nix utils ])
             ++ (with users.tianyaochou; [ users.tianyaochou.darwin develop ]);
         };
       };
