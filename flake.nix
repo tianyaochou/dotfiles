@@ -77,7 +77,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             workstation
-          ] ++ (with profiles; [ nixos nix server graphical ])
+          ] ++ (with profiles; [ profiles.nixos nix server graphical ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
       };

@@ -16,6 +16,7 @@
       gptfdisk
       iputils
       usbutils
+      pciutils
       utillinux
     ];
 
@@ -26,7 +27,7 @@
         nrb = ifSudo "sudo nixos-rebuild";
 
         # fix nixos-option for flake compat
-        nixos-option = "nixos-option -I nixpkgs=${self}/lib/compat";
+        # nixos-option = "nixos-option -I nixpkgs=${self}/lib/compat";
 
         # systemd
         ctl = "systemctl";

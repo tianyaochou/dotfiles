@@ -16,6 +16,7 @@
 
   services.openssh.enable = true;
   services.tailscale.enable = true;
+  networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
   nix.gc.automatic = true;
 }
