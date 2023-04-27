@@ -22,7 +22,6 @@ in
     "blockblock"
     "iina"
     "keka"
-    "mattermost"
     "obsidian"
     "busycal"
     "pdf-expert"

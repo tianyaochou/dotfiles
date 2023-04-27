@@ -2,7 +2,7 @@
 {
   imports = [ inputs.nix-doom-emacs.hmModule ];
 
-  home.packages = with pkgs; [ texlab ];
+  home.packages = with pkgs; [ texlab languagetool (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ])) ];
 
   programs.doom-emacs = {
     enable = true;
