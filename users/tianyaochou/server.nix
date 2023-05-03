@@ -4,7 +4,7 @@ let
   email = "tianyaochou@fastmail.com";
   keyFile = pkgs.fetchurl {
     url = "https://github.com/tianyaochou.keys";
-    sha256 = "sha256-dlhguU7MbbyHA/auKNqM3UnJ0pPZJDReDPeLdObC5dE=";
+    sha256 = "sha256-/yYCn4o1uVLeGMNQkXn85Ye8BMI592my5XcKd6cb1Aw=";
   };
 in
 {

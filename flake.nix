@@ -80,6 +80,14 @@
           ] ++ (with profiles; [ profiles.nixos nix server graphical utils ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
+        gateway = nixpkgs.lib.nixosSystem {
+          system = "aarch64-linux";
+          specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
+          modules = [
+            gateway
+          ] ++ (with profiles; [ profiles.nixos nix server utils ])
+            ++ (with users.tianyaochou; [ nixos server ]);
+        };
       };
 
       darwinConfigurations = with hosts.darwin; {
