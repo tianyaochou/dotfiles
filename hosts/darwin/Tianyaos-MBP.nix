@@ -18,6 +18,7 @@ in
     "gmp"
   ];
   homebrew.casks = [
+    "steam"
     "appcleaner"
     "blockblock"
     "iina"
