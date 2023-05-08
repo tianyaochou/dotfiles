@@ -29,9 +29,10 @@
     # Shameless plug: looking for a way to nixify your themes and make
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
+    nixinate.url = "github:matthewcroughan/nixinate";
   };
 
-  outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, nixinate, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -85,6 +86,15 @@
           specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
           modules = [
             gateway
+            {
+              _module.args.nixinate = {
+                host = "gateway.mgourd.me";
+                sshUser = "tianyaochou";
+                buildOn = "remote"; # valid args are "local" or "remote"
+                substituteOnTarget = true; # if buildOn is "local" then it will substitute on the target, "-s"
+                hermetic = false;
+              };
+            }
           ] ++ (with profiles; [ profiles.nixos nix server utils ])
             ++ (with users.tianyaochou; [ nixos server ]);
         };
@@ -115,5 +125,6 @@
           ];
         };
       };
+      apps = nixinate.nixinate.x86_64-darwin self;
     };
 }

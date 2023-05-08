@@ -23,6 +23,7 @@ in
     "blockblock"
     "iina"
     "keka"
+    "raycast"
     "obsidian"
     "busycal"
     "pdf-expert"
