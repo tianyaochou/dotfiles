@@ -30,9 +30,10 @@
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
     nixinate.url = "github:matthewcroughan/nixinate";
+    sops-nix.url = "github:Mic92/sops-nix";
   };
 
-  outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, nixinate, ... }@inputs:
+  outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, nixinate, sops-nix, ... }@inputs:
     let
       inherit (self) outputs;
       forAllSystems = nixpkgs.lib.genAttrs [
@@ -77,8 +78,9 @@
           specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
           modules = [
             home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
             workstation
-          ] ++ (with profiles; [ profiles.nixos nix server graphical utils sops ])
+          ] ++ (with profiles; [ profiles.nixos nix server graphical utils sops minio ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
         gateway = nixpkgs.lib.nixosSystem {
