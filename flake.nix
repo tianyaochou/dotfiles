@@ -44,7 +44,7 @@
       ];
       hosts = digga.lib.rakeLeaves ./hosts;
       users = digga.lib.rakeLeaves ./users;
-      profiles = digga.lib.rakeLeaves ./profiles;
+      profiles = digga.lib.rakeLeaves ./hosts/profiles;
       hmProfiles = digga.lib.rakeLeaves ./home-manager/profiles;
     in
     rec {

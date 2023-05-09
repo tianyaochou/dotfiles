@@ -7,6 +7,7 @@ in
   users.users.${username} = {
     isNormalUser = true;
     name = username;
+    initialPassword = "password";
     shell = pkgs.fish;
     extraGroups = [ "wheel" ];
   };

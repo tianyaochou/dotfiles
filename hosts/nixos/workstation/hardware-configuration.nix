@@ -14,9 +14,14 @@
   boot.extraModulePackages = [ ];
   boot.kernelParams = [ "intel_iommu=on" ];
 
+  fileSystems."/boot/efi" = {
+    device = "/dev/sda1";
+    fsType = "vfat";
+  };
+
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/ba68335b-5ec1-4963-8f1a-e6e031fa6cc8";
-      fsType = "ext4";
+    { device = "/dev/sda2";
+      fsType = "btrfs";
     };
 
   swapDevices = [ ];
