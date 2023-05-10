@@ -39,6 +39,7 @@ in
 
     "blackhole-16ch"
     "soundsource"
+    "macfuse"
 
     "clashx"
     "calibre"

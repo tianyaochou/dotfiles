@@ -109,7 +109,7 @@
           modules = [
             home-manager.darwinModules.home-manager
             Tianyaos-MBP
-          ] ++ (with profiles; [ profiles.darwin nix utils ])
+          ] ++ (with profiles; [ profiles.darwin nix utils sops ])
             ++ (with users.tianyaochou; [ users.tianyaochou.darwin develop ]);
         };
       };

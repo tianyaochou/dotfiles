@@ -1,7 +1,10 @@
 keys:
+  - &tianyaochou 2563EC8D8124B3B1B74FB4102376067C5BEDC26B
   - &workstation age1s7j3r738qaq85qdyep85k5hqk35yqqre575tj5syju06drjaq98qzh62xf
 creation_rules:
   - path_regex: secrets/
     key_groups:
     - age:
       - *workstation
+      pgp:
+      - *tianyaochou
