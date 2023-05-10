@@ -1,14 +1,12 @@
 { config, lib, pkgs, ... }:
 
 {
-  sops.defaultSopsFile = ../../secrets/secrets.yaml;
-
-  sops.age.sshKeyPaths = [ "/etc/ssh/ssh_host_ed25519_key" ];
-
   sops.secrets."minio_root_user" = {
+    sopsFile = ./secrets.yaml;
     restartUnits = ["minio.service"];
   };
   sops.secrets."minio_root_password" = {
+    sopsFile = ./secrets.yaml;
     restartUnits = ["minio.service"];
   };
 
