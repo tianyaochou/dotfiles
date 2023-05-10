@@ -1,0 +1,7 @@
+keys:
+  - &workstation age1s7j3r738qaq85qdyep85k5hqk35yqqre575tj5syju06drjaq98qzh62xf
+creation_rules:
+  - path_regex: secrets/
+    key_groups:
+    - age:
+      - *workstation

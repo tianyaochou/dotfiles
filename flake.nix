@@ -78,7 +78,7 @@
           modules = [
             home-manager.nixosModules.home-manager
             workstation
-          ] ++ (with profiles; [ profiles.nixos nix server graphical utils ])
+          ] ++ (with profiles; [ profiles.nixos nix server graphical utils sops ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
         gateway = nixpkgs.lib.nixosSystem {
