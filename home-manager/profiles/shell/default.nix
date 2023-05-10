@@ -42,7 +42,7 @@
 
     interactiveShellInit = ''
       set --global tide_character_icon λ
-      set --global VISUAL "emacs"
+      set --global VISUAL "emacsclient -nw"
       set --global EDITOR $VISUAL
     '';
   };

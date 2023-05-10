@@ -8,3 +8,7 @@ creation_rules:
       - *workstation
       pgp:
       - *tianyaochou
+  - path_regex: home\-manager/profiles/restic/secrets\.yaml
+    key_groups:
+    - pgp:
+      - *tianyaochou

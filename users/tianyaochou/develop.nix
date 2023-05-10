@@ -8,7 +8,7 @@ in
   home-manager.extraSpecialArgs = { inherit inputs; profiles = hmProfiles; };
   home-manager.users.${username} =
   { pkgs, profiles, ... }: {
-    imports = (with profiles; [ shell git emacs ]);
+    imports = (with profiles; [ shell git emacs restic ]);
 
     home.packages = with pkgs;
       [
