@@ -15,12 +15,12 @@
   boot.kernelParams = [ "intel_iommu=on" ];
 
   fileSystems."/boot/efi" = {
-    device = "/dev/sda1";
+    device = "/dev/sdb1";
     fsType = "vfat";
   };
 
   fileSystems."/" =
-    { device = "/dev/sda2";
+    { device = "/dev/sdb2";
       fsType = "btrfs";
     };
 

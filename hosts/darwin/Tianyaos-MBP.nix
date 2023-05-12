@@ -25,6 +25,7 @@ in
     "keka"
     "raycast"
     "obsidian"
+    "logseq"
     "busycal"
     "pdf-expert"
     "racket"
