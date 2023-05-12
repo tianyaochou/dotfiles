@@ -18,6 +18,7 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.efi.canTouchEfiVariables = true;
 
+  networking.interfaces.enp2s0.wakeOnLan.enable = true;
   networking.hostName = "workstation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
