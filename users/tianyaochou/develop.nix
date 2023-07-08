@@ -8,7 +8,7 @@ in
   home-manager.extraSpecialArgs = { inherit inputs; profiles = hmProfiles; };
   home-manager.users.${username} =
   { pkgs, profiles, ... }: {
-    imports = (with profiles; [ shell git emacs restic ]);
+    imports = (with profiles; [ shell git emacs restic vscode helix ]);
 
     home.packages = with pkgs;
       [
@@ -17,11 +17,18 @@ in
         (python310.withPackages (p: with p;[ jupyter pygments ]))
         rustup
         agda
+        stack
+        ghc
+        haskell-language-server
 
         nil
 
+        iosevka-bin
+        (iosevka-bin.override {variant = "slab";})
+        (iosevka-bin.override {variant = "etoile";})
+
         # Utility
-        du-dust # Dist Usage rewriten in rust
+        du-dust # Dist Usage rewritten in rust
         entr
         ffmpeg
         mat2
@@ -34,6 +41,7 @@ in
 
         haskellPackages.pandoc-crossref
         texlive.combined.scheme-full
+        typst
       ];
 
     programs.git = {

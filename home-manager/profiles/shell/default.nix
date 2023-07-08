@@ -10,15 +10,6 @@
         src = fishPlugins.done;
       }
       {
-        name = "tide";
-        src = fetchFromGitHub {
-          owner = "IlanCosman";
-          repo = "tide";
-          rev = "main";
-          sha256 = "1c2E3UC3r9hPfijAQoZ/+4yXieFxC4+hkk7wUyr30NM=";
-        };
-      }
-      {
         name = "autopair.fish";
         src = fetchFromGitHub {
           owner = "jorgebucaran";
@@ -30,21 +21,29 @@
     ];
 
     shellInit = ''
-      ### Add nix binary paths to the PATH
-      # Perhaps someday will be fixed in nix or nix-darwin itself
-      if test (uname) = Darwin
-        fish_add_path --prepend --global "/etc/profiles/per-user/tianyaochou/bin" /run/current-system/sw/bin
-      end
       fish_add_path $HOME/.ghcup/bin
       fish_add_path $HOME/.cargo/bin
       source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
     '';
 
     interactiveShellInit = ''
-      set --global tide_character_icon λ
       set --global VISUAL "emacsclient -nw"
       set --global EDITOR $VISUAL
     '';
+  };
+
+  programs.starship = {
+    enable = true;
+    settings = {
+      character = {
+        success_symbol = "[λ](bold green)";
+        error_symbol = "[λ](bold red)";
+      };
+      git_branch = {
+        symbol = "";
+        style = "bold green";
+      };
+    };
   };
 
   programs.zoxide.enable = true;

@@ -80,7 +80,16 @@
             home-manager.nixosModules.home-manager
             sops-nix.nixosModules.sops
             workstation
-          ] ++ (with profiles; [ profiles.nixos nix server graphical utils sops minio ])
+            {
+              _module.args.nixinate = {
+                host = "workstation";
+                sshUser = "tianyaochou";
+                buildOn = "remote";
+                substituteOnTarget = true;
+                hermetic = false;
+              };
+            }
+          ] ++ (with profiles; [ profiles.nixos nix server utils sops minio])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
         gateway = nixpkgs.lib.nixosSystem {
@@ -88,6 +97,7 @@
           specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
           modules = [
             gateway
+            sops-nix.nixosModules.sops
             {
               _module.args.nixinate = {
                 host = "gateway.mgourd.me";
@@ -97,7 +107,7 @@
                 hermetic = false;
               };
             }
-          ] ++ (with profiles; [ profiles.nixos nix server utils ])
+          ] ++ (with profiles; [ profiles.nixos nix server utils sops miniflux ])
             ++ (with users.tianyaochou; [ nixos server ]);
         };
       };

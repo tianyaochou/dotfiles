@@ -18,12 +18,41 @@
   boot.loader.efi.efiSysMountPoint = "/boot/efi";
   boot.loader.efi.canTouchEfiVariables = true;
 
-  networking.interfaces.enp2s0.wakeOnLan.enable = true;
+  networking.interfaces.enp2s0 = {
+    wakeOnLan.enable = true;
+    useDHCP = true;
+  };
   networking.hostName = "workstation"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
   # Enable networking
   networking.networkmanager.enable = true;
+
+  services.hledger-web = {
+    enable = true;
+    host = "0.0.0.0";
+    baseUrl = "http://workstation:5000";
+    capabilities.manage = true;
+    capabilities.add = true;
+  };
+
+  services.seafile = {
+    enable = true;
+    adminEmail = "hi@tianyao.ch";
+    initialAdminPassword = "password";
+    seafileSettings = {
+      fileserver = { host = "127.0.0.1"; port = 8082; };
+    };
+    ccnetSettings.General.SERVICE_URL = "http://workstation";
+  };
+
+  services.nginx.enable = true;
+  services.nginx.virtualHosts.workstation = {
+    locations."/".proxyPass = "http://unix:/run/seahub/gunicorn.sock";
+    locations."/seafhttp/" = {
+      proxyPass = "http://127.0.0.1:8082";
+    };
+  };
 
   # Set your time zone.
   time.timeZone = "Europe/Copenhagen";

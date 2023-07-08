@@ -15,12 +15,12 @@
   boot.kernelParams = [ "intel_iommu=on" ];
 
   fileSystems."/boot/efi" = {
-    device = "/dev/sdb1";
+    device = "/dev/disk/by-uuid/0A9E-9525";
     fsType = "vfat";
   };
 
   fileSystems."/" =
-    { device = "/dev/sdb2";
+    { device = "/dev/disk/by-uuid/7497c0dc-bc69-4448-9b79-31f5b8ba453e";
       fsType = "btrfs";
     };
 
@@ -37,4 +37,6 @@
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
   powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
+  hardware.fancontrol.enable = true;
+  hardware.fancontrol.config = "INTERVAL=10";
 }

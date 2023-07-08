@@ -14,7 +14,6 @@ in
   homebrew.taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
   homebrew.brews = [
     "lux"
-    "ghcup"
     "gmp"
   ];
   homebrew.casks = [
@@ -28,6 +27,7 @@ in
     "logseq"
     "busycal"
     "pdf-expert"
+    "skim"
     "racket"
     "vmware-fusion"
     "zoom"
