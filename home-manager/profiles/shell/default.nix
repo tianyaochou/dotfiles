@@ -21,8 +21,8 @@
     ];
 
     shellInit = ''
-      fish_add_path $HOME/.ghcup/bin
       fish_add_path $HOME/.cargo/bin
+      fish_add_path $HOME/.ghcup/bin
       source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
     '';
 
@@ -42,6 +42,9 @@
       git_branch = {
         symbol = "";
         style = "bold green";
+      };
+      nix_shell = {
+        heuristic = if pkgs.stdenv.isDarwin then false else true;
       };
     };
   };

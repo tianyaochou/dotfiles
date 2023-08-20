@@ -12,10 +12,9 @@ let repo = "s3:http://workstation:9000/restic"; in
     enable = true;
     config = {
       ProgramArguments = [ "/etc/profiles/per-user/tianyaochou/bin/fish"
-                           "-c" "pmset -g ac | grep 'No adapter attached.' || repo-restic backup /Users/tianyaochou/Projects && logger 'restic backup succeeded'" ];
+                           "-c" "pmset -g ac | grep 'No adapter attached.' || repo-restic backup /Users/tianyaochou/Projects && repo-restic forget --keep-daily 7 --keep-monthly 12 --keep-hourly 24" ];
       StartCalendarInterval = [
         {
-          Hour = 12;
           Minute = 0;
         }
       ];

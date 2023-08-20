@@ -14,6 +14,7 @@
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
     digga.url = "github:divnix/digga";
+    digga.inputs.nixpkgs.follows = "nixpkgs";
     digga.inputs.nixlib.follows = "nixpkgs";
     digga.inputs.darwin.follows = "darwin";
     digga.inputs.home-manager.follows = "home-manager";
@@ -22,6 +23,7 @@
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
+    nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -30,7 +32,9 @@
     # everything match nicely? Try nix-colors!
     # nix-colors.url = "github:misterio77/nix-colors";
     nixinate.url = "github:matthewcroughan/nixinate";
+    nixinate.inputs.nixpkgs.follows = "nixpkgs";
     sops-nix.url = "github:Mic92/sops-nix";
+    sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = { self, nixpkgs, home-manager, digga, darwin, nix-doom-emacs, nixinate, sops-nix, ... }@inputs:
@@ -74,6 +78,24 @@
       # NixOS configuration entrypoint
       # Available through 'nixos-rebuild --flake .#your-hostname'
       nixosConfigurations = with hosts.nixos; {
+        mainframe = nixpkgs.lib.nixosSystem {
+          specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
+          modules = [
+            home-manager.nixosModules.home-manager
+            sops-nix.nixosModules.sops
+            mainframe
+            {
+              _module.args.nixinate = {
+                host = "mainframe";
+                sshUser = "tianyaochou";
+                buildOn = "remote";
+                substituteOnTarget = true;
+                hermetic = false;
+              };
+            }
+          ] ++ (with profiles; [ profiles.nixos nix server utils sops graphical virtualisation])
+            ++ (with users.tianyaochou; [ nixos personal server develop ]);
+        };
         workstation = nixpkgs.lib.nixosSystem {
           specialArgs = { inherit inputs outputs; hmProfiles = hmProfiles; };
           modules = [

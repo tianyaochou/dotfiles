@@ -15,6 +15,7 @@ in
   homebrew.brews = [
     "lux"
     "gmp"
+    "ghcup"
   ];
   homebrew.casks = [
     "steam"
@@ -29,6 +30,7 @@ in
     "pdf-expert"
     "skim"
     "racket"
+    "dash"
     "vmware-fusion"
     "zoom"
     "zotero"
@@ -46,7 +48,6 @@ in
     "calibre"
     "netnewswire"
     "discord"
-    "docker"
     "drawio"
     "fujifilm-x-raw-studio"
     "google-chrome"

@@ -8,11 +8,26 @@ in
 
   nixpkgs.config.allowUnfree = true;
 
+
+  nix.distributedBuilds = true;
+  nix.buildMachines = [
+    {
+      hostName = "workstation";
+      sshUser = "tianyaochou";
+      sshKey = "/Users/tianyaochou/.ssh/id_rsa";
+      publicHostKey = "c3NoLWVkMjU1MTkgQUFBQUMzTnphQzFsWkRJMU5URTVBQUFBSUkwa1FSWkxjU2tTUlBZTUhEb2cwZno3QnhvemhYVEdyVEdreWR0TElZUTIgcm9vdEB3b3Jrc3RhdGlvbgo";
+      systems = [ "x86_64-linux" ];
+    }
+  ];
+
   nix.nixPath = [
     "nixpkgs=${inputs.nixpkgs}"
   ];
 
-  nix.gc.automatic = true;
+  nix.gc = {
+    automatic = true;
+    options = "--delete-older-than 21d";
+  };
 
   nix.settings = {
     # Prevents impurities in builds
@@ -34,6 +49,7 @@ in
 
   # Generally useful nix option defaults
   nix.extraOptions = ''
+      builders-use-substitutes = true
       min-free = 536870912
       keep-outputs = true
       keep-derivations = true

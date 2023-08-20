@@ -12,16 +12,15 @@
   boot.initrd.kernelModules = [ ];
   boot.kernelModules = [ "kvm-intel" ];
   boot.extraModulePackages = [ ];
-  boot.kernelParams = [ "intel_iommu=on" ];
-
-  fileSystems."/boot/efi" = {
-    device = "/dev/disk/by-uuid/0A9E-9525";
-    fsType = "vfat";
-  };
 
   fileSystems."/" =
-    { device = "/dev/disk/by-uuid/7497c0dc-bc69-4448-9b79-31f5b8ba453e";
+    { device = "/dev/disk/by-uuid/f15db239-5cb9-423a-83dd-350a6dabf69e";
       fsType = "btrfs";
+    };
+
+  fileSystems."/boot" =
+    { device = "/dev/disk/by-uuid/5EF6-031F";
+      fsType = "vfat";
     };
 
   swapDevices = [ ];
@@ -31,10 +30,10 @@
   # still possible to use this option, but it's recommended to use it in conjunction
   # with explicit per-interface declarations with `networking.interfaces.<interface>.useDHCP`.
   networking.useDHCP = lib.mkDefault true;
-  # networking.interfaces.enp2s0.useDHCP = lib.mkDefault true;
-  # networking.interfaces.wlp3s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.enp8s0.useDHCP = lib.mkDefault true;
+  # networking.interfaces.wlo1.useDHCP = lib.mkDefault true;
 
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
-  powerManagement.cpuFreqGovernor = lib.mkDefault "powersave";
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
   hardware.cpu.intel.updateMicrocode = lib.mkDefault config.hardware.enableRedistributableFirmware;
 }
