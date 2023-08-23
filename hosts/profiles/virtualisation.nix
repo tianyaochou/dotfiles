@@ -12,5 +12,5 @@
     };
   };
   virtualisation.spiceUSBRedirection.enable = true;
-  environment.systemPackages = with pkgs; [ virt-manager win-virtio spice win-spice ];
+  environment.systemPackages = with pkgs; [ virt-manager OVMF win-virtio spice win-spice ];
 }
