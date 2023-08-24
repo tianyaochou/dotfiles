@@ -93,7 +93,7 @@
                 hermetic = false;
               };
             }
-          ] ++ (with profiles; [ profiles.nixos nix server utils sops graphical virtualisation])
+          ] ++ (with profiles; [ profiles.nixos nix server utils sops graphical virtualisation proxy ])
             ++ (with users.tianyaochou; [ nixos personal server develop ]);
         };
         workstation = nixpkgs.lib.nixosSystem {

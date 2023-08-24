@@ -2,6 +2,7 @@
 {
   sops.secrets."config.yaml" = {
     sopsFile = ./config.yaml;
+    type = "binary";
     restartUnits = [ "clash-meta.service" ];
   };
 
