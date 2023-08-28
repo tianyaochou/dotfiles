@@ -8,7 +8,7 @@
 
   programs.doom-emacs = {
     enable = true;
-    emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsMacport else pkgs.emacs ;
+    emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsMacport else pkgs.emacs-gtk ;
     doomPrivateDir = ./doom.d;
     doomPackageDir = pkgs.linkFarm "my-doom-packages" [
       # straight needs a (possibly empty) `config.el` file to build
