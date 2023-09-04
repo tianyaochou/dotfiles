@@ -1,6 +1,6 @@
-{ pkgs, inputs, lib, ... }:
+{ pkgs, homeModules, lib, ... }:
 {
-  imports = [ inputs.nix-doom-emacs.hmModule ];
+  imports = [ homeModules.nix-doom-emacs ];
 
   home.packages = with pkgs; [ texlab languagetool (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ])) ];
 

@@ -1,8 +1,9 @@
-{ config, pkgs, ... }:
+{ config, pkgs, profiles, users, ... }:
 let 
   hostName = "Tianyaos-MBP";
 in
 {
+  imports = with profiles; [ darwin nix utils sops ] ++ (with users.tianyaochou; [ darwin develop ]);
   programs.fish.enable = true;
   # environment.shells = with pkgs; [ fish ];
 

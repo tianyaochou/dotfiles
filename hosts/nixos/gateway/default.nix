@@ -1,7 +1,7 @@
-{ config, lib, pkgs, ... }:
+{ config, users, pkgs, profiles, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops miniflux ]) ++ (with users.tianyaochou; [ nixos server ]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

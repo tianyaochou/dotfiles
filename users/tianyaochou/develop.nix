@@ -1,11 +1,8 @@
-{ inputs, hmProfiles, ... }:
+{ config , ... }:
 let username = "tianyaochou";
     email = "tianyaochou@fastmail.com";
 in
 {
-  home-manager.useGlobalPkgs = true;
-  home-manager.useUserPackages = true;
-  home-manager.extraSpecialArgs = { inherit inputs; profiles = hmProfiles; };
   home-manager.users.${username} =
   { pkgs, profiles, ... }: {
     imports = (with profiles; [ shell git emacs restic vscode helix ]);

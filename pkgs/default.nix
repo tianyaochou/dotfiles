@@ -1,7 +1,7 @@
 # Custom packages, that can be defined similarly to ones from nixpkgs
 # You can build them using 'nix build .#example' or (legacy) 'nix-build -A example'
 
-{ pkgs }: {
+{ nixpkgs }: {
   # example = pkgs.callPackage ./example { };
-  iosevka-bin-nf = pkgs.callPackage ./iosevka-bin-nf.nix {};
+  iosevka-bin-nf = nixpkgs.callPackage ./iosevka-bin-nf.nix {};
 }

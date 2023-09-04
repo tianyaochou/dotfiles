@@ -1,6 +1,6 @@
-{ config, pkgs, suites, ... }:
+{ config, pkgs, profiles, users, ... }:
 {
-  imports = [ ./hardware-configuration.nix ];
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops graphical virtualisation proxy ]) ++ (with users.tianyaochou; [ nixos personal server develop ]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

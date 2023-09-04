@@ -2,13 +2,10 @@
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
 
-{ config, pkgs, suites, ... }:
+{ config, pkgs, profiles, users, ... }:
 
 {
-  imports =
-    [ # Include the results of the hardware scan.
-      ./hardware-configuration.nix
-    ];
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [nixos nix server utils sops minio]) ++ (with users.tianyaochou; [ nixos personal server develop ]);
 
   # Bootloader.
   boot.loader.grub.enable = true;
