@@ -16,7 +16,6 @@ in
   homebrew.brews = [
     "lux"
     "gmp"
-    "ghcup"
   ];
   homebrew.casks = [
     "steam"

@@ -18,7 +18,6 @@ in
       coreutils
       pciutils
       curl
-      direnv
       dnsutils
       fd
       git

@@ -15,12 +15,14 @@
     digga.inputs.home-manager.follows = "home-manager";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
+    devenv.url = "github:cachix/devenv";
 
     darwin.url = "github:LnL7/nix-darwin";
     darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
+    vscode-server.url = "github:nix-community/nixos-vscode-server";
 
     # TODO: Add any other flake you might need
     # hardware.url = "github:nixos/nixos-hardware";
@@ -40,6 +42,11 @@
         packages = import ./pkgs { inherit nixpkgs; };
       };
 
-      imports = [ ./lib/hosts.nix ./flake-modules/hosts-flake.nix ];
+      imports = [
+        inputs.devenv.flakeModule
+        ./devshells/haskell.nix
+        ./lib/hosts.nix
+        ./flake-modules/hosts-flake.nix
+      ];
     };
 }

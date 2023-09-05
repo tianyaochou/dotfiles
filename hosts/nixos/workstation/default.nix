@@ -25,14 +25,6 @@
   # Enable networking
   networking.networkmanager.enable = true;
 
-  services.hledger-web = {
-    enable = true;
-    host = "0.0.0.0";
-    baseUrl = "http://workstation:5000";
-    capabilities.manage = true;
-    capabilities.add = true;
-  };
-
   services.seafile = {
     enable = true;
     adminEmail = "hi@tianyao.ch";

@@ -38,9 +38,11 @@
       };
 
       darwinConfigurations = with hosts.darwin; {
-        Tianyaos-MBP = self.lib.mkMacOSHost {}
-            Tianyaos-MBP
-            "x86_64-darwin";
+        Tianyaos-MBP = self.lib.mkMacOSHost {
+          nixinate = {};
+          host = Tianyaos-MBP;
+          system = "x86_64-darwin";
+        };
       };
 
       apps = inputs.nixinate.nixinate.x86_64-darwin self;

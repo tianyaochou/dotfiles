@@ -18,7 +18,7 @@
 
   system.activationScripts.mkClashDir = lib.stringAfter ["var"] ''
     mkdir -p /var/lib/clash
-    ln -s ${pkgs.clash-geoip}/etc/clash/Country.mmdb /var/lib/clash/country.mmdb
+    ln -s -f ${pkgs.clash-geoip}/etc/clash/Country.mmdb /var/lib/clash/country.mmdb
   '';
 
   networking.proxy = {

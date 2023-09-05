@@ -1,14 +1,14 @@
 { config, lib, pkgs, ... }:
 
 let
-  inherit (pkgs.stdenv) isDarwin;
+  inherit (pkgs.stdenv) isDarwin isLinux;
 in
 {
   imports = [ ./cachix ];
 
-  nixpkgs.config.allowUnfree = true;
+  nix.optimise.automatic = lib.mkIf isLinux true;
 
-  nix.optimise.automatic = true;
+  nixpkgs.config.allowUnfree = true;
 
   nix.gc = {
     automatic = true;

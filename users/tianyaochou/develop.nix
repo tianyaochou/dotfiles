@@ -13,10 +13,6 @@ in
         opam
         (python310.withPackages (p: with p;[ jupyter pygments ]))
         rustup
-        agda
-        stack
-        ghc
-        haskell-language-server
 
         nil
 
@@ -44,6 +40,11 @@ in
     programs.git = {
       userName = username;
       userEmail = email;
+    };
+
+    programs.direnv = {
+      enable = true;
+      nix-direnv.enable = true;
     };
 
     programs.gpg = {

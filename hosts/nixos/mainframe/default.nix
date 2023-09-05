@@ -1,6 +1,6 @@
 { config, pkgs, profiles, users, ... }:
 {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops graphical virtualisation proxy ]) ++ (with users.tianyaochou; [ nixos personal server develop ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops graphical virtualisation ]) ++ (with users.tianyaochou; [ nixos personal server develop vscode-server ]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
