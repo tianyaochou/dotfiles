@@ -5,7 +5,7 @@
 { config, pkgs, profiles, users, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [nixos nix server utils sops minio]) ++ (with users.tianyaochou; [ nixos personal server develop ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [nixos nix server utils sops minio]) ++ (with users.tianyaochou; [ nixos personal server ]);
 
   # Bootloader.
   boot.loader.grub.enable = true;

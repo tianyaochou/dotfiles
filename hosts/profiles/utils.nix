@@ -2,7 +2,7 @@
 
 let
   inherit (lib) fileContents;
-  inherit (pkgs.stdenv.hostPlatform) isDarwin;
+  inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 in
 
 {
@@ -33,7 +33,13 @@ in
       tealdeer
       whois
       neofetch
-    ];
+    ] ++ (if isLinux then [
+      dosfstools
+      gptfdisk
+      iputils
+      usbutils
+      utillinux
+    ] else []);
 
     shellAliases =
       let

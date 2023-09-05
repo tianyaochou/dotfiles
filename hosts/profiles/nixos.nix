@@ -1,24 +1,7 @@
 { config, lib, pkgs, self, ... }:
 
 {
-  nix = {
-    # Improve nix store disk usage
-    settings.system-features = [ "nixos-test" "benchmark" "big-parallel" "kvm" ];
-    settings.auto-optimise-store = true;
-    optimise.automatic = true;
-    settings.allowed-users = [ "@wheel" ];
-  };
-
   environment = {
-    # Selection of sysadmin tools that can come in handy
-    systemPackages = with pkgs; [
-      dosfstools
-      gptfdisk
-      iputils
-      usbutils
-      utillinux
-    ];
-
     shellAliases =
       let ifSudo = lib.mkIf config.security.sudo.enable; in
       {
