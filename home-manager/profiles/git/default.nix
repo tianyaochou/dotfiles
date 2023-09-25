@@ -11,6 +11,8 @@
       "build"
       ".vscode"
       ".DS_Store"
+      ".direnv"
+      ".devenv"
     ];
 
     aliases = {
@@ -19,6 +21,7 @@
       cob = "checkout -b";
       f = "fetch -p";
       c = "commit";
+      ca = "commit --amend";
       p = "push";
       pf = "push --force-with-lease";
       ba = "branch -a";

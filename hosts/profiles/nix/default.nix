@@ -6,8 +6,6 @@ in
 {
   imports = [ ./cachix ];
 
-  nix.optimise.automatic = lib.mkIf isLinux true;
-
   nixpkgs.config.allowUnfree = true;
 
   nix.gc = {

@@ -1,4 +1,4 @@
-{ self, pkgs, system, config, hmUsers, lib, suites, ... }:
+{ self, pkgs, system, config, lib, ... }:
 let
   username = "tianyaochou";
   email = "tianyaochou@fastmail.com";

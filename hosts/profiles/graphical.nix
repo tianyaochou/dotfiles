@@ -1,15 +1,12 @@
 { pkgs, ... }:
 {
-  services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver = {
+    enable = true;
+    displayManager.sddm.enable = true;
+    desktopManager.plasma5.enable = true;
+    layout = "us";
+  };
 
   services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startx";
-
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "us";
-    xkbVariant = "";
-  };
+  services.xrdp.defaultWindowManager = "startplasma-x11";
 }

@@ -5,7 +5,10 @@ let home-manager-config = {
       home-manager.extraSpecialArgs = { profiles = inputs.digga.lib.rakeLeaves ../home-manager/profiles; homeModules = {nix-doom-emacs = inputs.nix-doom-emacs.hmModule; vscode-server = inputs.vscode-server.homeModules.default; };};
   };
     nix-path-config = {
-      nix.nixPath = [ "nixpkgs=${inputs.nixpkgs}" ];
+      nix.registry = {
+        nixpkgs.flake = inputs.nixpkgs;
+        dotfiles.flake = self;
+      };
     };
 in {
   flake.lib = {
