@@ -35,7 +35,7 @@ in
     "zoom"
     "zotero"
     "motrix"
-    "cyberduck"
+    "transmit"
     "keybase"
     "quarto"
     "anki"

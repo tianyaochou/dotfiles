@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
@@ -11,14 +12,14 @@
     digga.url = "github:divnix/digga";
     digga.inputs.nixpkgs.follows = "nixpkgs";
     digga.inputs.nixlib.follows = "nixpkgs";
-    digga.inputs.darwin.follows = "darwin";
+    digga.inputs.darwin.follows = "nix-darwin";
     digga.inputs.home-manager.follows = "home-manager";
 
     flake-parts.url = "github:hercules-ci/flake-parts";
     devenv.url = "github:cachix/devenv";
 
-    darwin.url = "github:LnL7/nix-darwin";
-    darwin.inputs.nixpkgs.follows = "nixpkgs";
+    nix-darwin.url = "github:LnL7/nix-darwin";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     nix-doom-emacs.url = "github:nix-community/nix-doom-emacs";
     nix-doom-emacs.inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +34,7 @@
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, home-manager, nix-darwin, sops-nix, nixpkgs, digga, nixinate, ... }:
+  outputs = inputs@{ self, home-manager, nix-darwin, sops-nix, nixpkgs, nixpkgs-stable, digga, nixinate, ... }:
 
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-darwin" "x86_64-darwin" ];

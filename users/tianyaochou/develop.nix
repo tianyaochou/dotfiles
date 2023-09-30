@@ -1,4 +1,4 @@
-{ config , ... }:
+{ config, nixpkgs, ... }:
 let username = "tianyaochou";
     email = "tianyaochou@fastmail.com";
 in
@@ -14,7 +14,7 @@ in
         (python310.withPackages (p: with p;[ jupyter pygments ]))
         rustup
 
-        nil
+        nixpkgs.nixd
 
         iosevka-bin
         (iosevka-bin.override {variant = "slab";})

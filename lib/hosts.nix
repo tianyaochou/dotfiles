@@ -14,7 +14,7 @@ in {
   flake.lib = {
     mkNixOSHost = {nixinate, host, system}: inputs.nixpkgs.lib.nixosSystem {
       system = system;
-      specialArgs = { profiles = inputs.digga.lib.rakeLeaves ../hosts/profiles; users = inputs.digga.lib.rakeLeaves ../users; };
+      specialArgs = { profiles = inputs.digga.lib.rakeLeaves ../hosts/profiles; users = inputs.digga.lib.rakeLeaves ../users; nixpkgs = inputs.nixpkgs.legacyPackages.${system}; };
       modules = [
         inputs.home-manager.nixosModules.home-manager
         inputs.sops-nix.nixosModules.sops
@@ -26,7 +26,7 @@ in {
     };
     mkMacOSHost = {nixinate, host, system}: inputs.nix-darwin.lib.darwinSystem {
       system = system;
-      specialArgs = { profiles = inputs.digga.lib.rakeLeaves ../hosts/profiles; users = inputs.digga.lib.rakeLeaves ../users; };
+      specialArgs = { profiles = inputs.digga.lib.rakeLeaves ../hosts/profiles; users = inputs.digga.lib.rakeLeaves ../users; nixpkgs = inputs.nixpkgs.legacyPackages.${system}; };
       modules = [
         inputs.home-manager.darwinModules.home-manager
         home-manager-config
