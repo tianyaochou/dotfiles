@@ -21,7 +21,7 @@ in
     allowed-users = if isDarwin then [ "@admin" ] else [ "@wheel" ];
     # Give root user and wheel group special Nix privileges.
     trusted-users = if isDarwin then [ "@admin" ] else [ "root" "@wheel" ];
-    auto-optimise-store = true;
+    auto-optimise-store = !isDarwin; # HACK: see nix/#7273
   };
 
   # Generally useful nix option defaults

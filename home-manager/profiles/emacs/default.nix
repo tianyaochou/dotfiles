@@ -1,20 +1,8 @@
-{ pkgs, homeModules, lib, ... }:
+{ pkgs, lib, ... }:
 {
-  imports = [ homeModules.nix-doom-emacs ];
+  home.packages = with pkgs; [ texlab languagetool (if stdenv.isDarwin then emacs29-macport else emacs29-gtk3) (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ])) ];
 
-  home.packages = with pkgs; [ texlab languagetool (aspellWithDicts (dicts: with dicts; [ en en-computers en-science ])) ];
-
-  services.emacs.enable = if pkgs.stdenv.isDarwin then false else true;
-
-  programs.doom-emacs = {
-    enable = true;
-    emacsPackage = if pkgs.stdenv.isDarwin then pkgs.emacsMacport else pkgs.emacs-gtk ;
-    doomPrivateDir = ./doom.d;
-    doomPackageDir = pkgs.linkFarm "my-doom-packages" [
-      # straight needs a (possibly empty) `config.el` file to build
-      { name = "config.el"; path = pkgs.emptyFile; }
-      { name = "init.el"; path = ./doom.d/init.el; }
-      { name = "packages.el"; path = ./doom.d/packages.el; }
-    ];
+  home.file.".doom.d" = {
+    source = ./doom.d;
   };
 }
