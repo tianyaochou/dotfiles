@@ -23,6 +23,11 @@
       fsType = "vfat";
     };
 
+  fileSystems."/data" = {
+    device = "/dev/disk/by-label/data";
+    fsType = "btrfs";
+  };
+
   swapDevices = [ ];
 
   zramSwap.enable = true;

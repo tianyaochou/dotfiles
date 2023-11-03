@@ -21,5 +21,6 @@
   services.minio = {
     enable = true;
     rootCredentialsFile = config.sops.templates."minio-root-credentials".path;
+    dataDir = [ "/data/minio" ];
   };
 }

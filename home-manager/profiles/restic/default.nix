@@ -1,5 +1,5 @@
 { config, lib, pkgs, ... }:
-let repo = "s3:http://workstation:9000/restic"; in
+let repo = "s3:http://mainframe:9000/restic"; in
 {
   home.packages = [ pkgs.restic ];
 
