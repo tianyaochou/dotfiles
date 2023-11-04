@@ -1,7 +1,7 @@
 { config, lib, pkgs, ... }:
 let ids = [ "1002:73df" "1002:ab28" ]; in
 {
-  boot.kernelParams = [ "intel_iommu=on" ("vfio-pci.ids=" + lib.concatStringsSep "," ids) ];
+  boot.kernelParams = [ "intel_iommu=on" ]; # ("vfio-pci.ids=" + lib.concatStringsSep "," ids)
   boot.initrd.kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" "vfio_virqfd" ];
 
   virtualisation.libvirtd = {
