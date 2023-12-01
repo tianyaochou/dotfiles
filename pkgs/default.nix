@@ -4,4 +4,5 @@
 { nixpkgs }: {
   # example = pkgs.callPackage ./example { };
   iosevka-bin-nf = nixpkgs.callPackage ./iosevka-bin-nf.nix {};
+  pytorch = nixpkgs.callPackage ./pytorch-rocm.nix {};
 }

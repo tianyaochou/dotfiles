@@ -3,7 +3,7 @@
 
   inputs = {
     # Nixpkgs
-    nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:nixos/nixpkgs/nixpkgs-unstable";
     nixpkgs-edge.url = "github:nixos/nixpkgs";
     nixpkgs-stable.url = "github:nixos/nixpkgs/nixos-23.05";
 
@@ -20,7 +20,7 @@
     devenv.url = "github:cachix/devenv";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-edge";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 
@@ -38,8 +38,8 @@
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
       systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-darwin" "x86_64-darwin" ];
 
-      perSystem = { config, nixpkgs, ... }:{
-        packages = import ./pkgs { inherit nixpkgs; };
+      perSystem = { config, pkgs, ... }:{
+        packages = import ./pkgs { nixpkgs = pkgs; };
       };
 
       imports = [
