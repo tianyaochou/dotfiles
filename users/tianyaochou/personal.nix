@@ -8,7 +8,6 @@ in
     extraGroups = [ "networkmanager" "libvirtd" ];
     packages = with pkgs; [
       firefox
-      kate
     ];
   };
 }

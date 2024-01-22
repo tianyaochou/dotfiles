@@ -13,12 +13,12 @@
 
         # systemd
         ctl = "systemctl";
-        stl = ifSudo "s systemctl";
+        stl = ifSudo "sudo systemctl";
         utl = "systemctl --user";
         ut = "systemctl --user start";
         un = "systemctl --user stop";
-        up = ifSudo "s systemctl start";
-        dn = ifSudo "s systemctl stop";
+        up = ifSudo "sudo systemctl start";
+        dn = ifSudo "sudo systemctl stop";
         jtl = "journalctl";
       };
   };

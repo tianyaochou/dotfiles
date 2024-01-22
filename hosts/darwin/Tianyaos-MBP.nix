@@ -25,7 +25,7 @@ in
     "keka"
     "raycast"
     "obsidian"
-    "logseq"
+    "notion"
     "busycal"
     "pdf-expert"
     "skim"
@@ -36,6 +36,7 @@ in
     "zotero"
     "motrix"
     "transmit"
+    "iterm2"
     "keybase"
     "quarto"
     "anki"
@@ -51,7 +52,6 @@ in
     "drawio"
     "fujifilm-x-raw-studio"
     "google-chrome"
-    "macdown"
     "obsidian"
   ];
 

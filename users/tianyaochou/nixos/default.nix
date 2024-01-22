@@ -9,7 +9,7 @@ in
     name = username;
     initialPassword = "password";
     shell = pkgs.fish;
-    extraGroups = [ "wheel" ];
+    extraGroups = [ "wheel" "networkmanager" ];
   };
   programs.fish.enable = true;
 }

@@ -13,17 +13,6 @@
           host = mainframe;
           system = "x86_64-linux";
         };
-        workstation = self.lib.mkNixOSHost {
-          host = workstation;
-          nixinate = {
-            host = "workstation";
-            sshUser = "tianyaochou";
-            buildOn = "remote";
-            substituteOnTarget = true;
-            hermetic = false;
-          };
-          system = "x86_64-linux";
-        };
         gateway = self.lib.mkNixOSHost {
           nixinate = {
             host = "gateway.mgourd.me";

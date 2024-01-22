@@ -24,11 +24,4 @@
     };
     adminCredentialsFile = config.sops.templates."miniflux-admin-credential".path;
   };
-
-  services.nginx.enable = true;
-  services.nginx.virtualHosts."rss.mgourd.me" = {
-    locations."/".proxyPass = "http://localhost:8080";
-  };
-
-  networking.firewall.allowedTCPPorts = [ 80 ];
 }
