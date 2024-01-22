@@ -24,6 +24,17 @@
           host = gateway;
           system = "aarch64-linux";
         };
+        mole = self.lib.mkNixOSHost {
+          nixinate = {
+            host = "mole";
+            sshUser = "tianyaochou";
+            buildOn = "remote";
+            substituteOnTarget = true;
+            hermetic = false;
+          };
+          host = mole;
+          system = "aarch64-linux";
+        };
       };
 
       darwinConfigurations = with hosts.darwin; {

@@ -2,7 +2,7 @@
 let home-manager-config = {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
-      home-manager.extraSpecialArgs = { profiles = inputs.digga.lib.rakeLeaves ../home-manager/profiles; homeModules = {nix-doom-emacs = inputs.nix-doom-emacs.hmModule; vscode-server = inputs.vscode-server.homeModules.default; };};
+      home-manager.extraSpecialArgs = { profiles = inputs.digga.lib.rakeLeaves ../home-manager/profiles; homeModules = { vscode-server = inputs.vscode-server.homeModules.default; };};
   };
     nix-path-config = {
       nix.registry = {
