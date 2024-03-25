@@ -16,6 +16,7 @@ in
   homebrew.brews = [
     "lux"
     "gmp"
+    "cloudflared"
   ];
   homebrew.casks = [
     "steam"
@@ -23,13 +24,17 @@ in
     "blockblock"
     "iina"
     "keka"
-    "raycast"
+    "launchbar"
+    "bettertouchtool"
+    "thingsmacsandboxhelper"
+    "shottr"
     "obsidian"
     "notion"
     "busycal"
     "pdf-expert"
     "skim"
     "racket"
+    "visual-studio-code"
     "dash"
     "vmware-fusion"
     "zoom"
@@ -50,7 +55,6 @@ in
     "netnewswire"
     "discord"
     "drawio"
-    "fujifilm-x-raw-studio"
     "google-chrome"
     "obsidian"
   ];

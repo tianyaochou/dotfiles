@@ -22,13 +22,11 @@
 
     shellInit = ''
       fish_add_path $HOME/.cargo/bin
-      fish_add_path $HOME/.config/emacs/bin
       source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
     '';
 
     interactiveShellInit = ''
-      set --global VISUAL "emacsclient -nw"
-      set --global EDITOR $VISUAL
+      set --global EDITOR hx
     '';
   };
 
@@ -51,4 +49,16 @@
 
   programs.zoxide.enable = true;
   programs.skim.enable = true;
+  # programs.nix-index.enable = true;
+  programs.command-not-found.enable = true;
+  programs.direnv = {
+    enable = true;
+    nix-direnv.enable = true;
+  };
+  programs.eza = {
+    enable = true;
+    enableAliases = true;
+    git = true;
+  };
+  programs.bat.enable = true;
 }

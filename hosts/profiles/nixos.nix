@@ -29,6 +29,8 @@
     openFirewall = lib.mkDefault false;
   };
 
+  programs.command-not-found.enable = false;
+
   # Service that makes Out of Memory Killer more effective
   services.earlyoom.enable = true;
 }

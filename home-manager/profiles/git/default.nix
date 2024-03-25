@@ -13,6 +13,8 @@
       ".DS_Store"
       ".direnv"
       ".devenv"
+      "fable_modules"
+      "node_modules"
     ];
 
     aliases = {

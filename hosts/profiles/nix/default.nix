@@ -1,4 +1,4 @@
-{ config, lib, pkgs, ... }:
+{ config, lib, pkgs, inputs, ... }:
 
 let
   inherit (pkgs.stdenv) isDarwin isLinux;
@@ -7,6 +7,10 @@ in
   imports = [ ./cachix ];
 
   nixpkgs.config.allowUnfree = true;
+
+  nix.nixPath = [
+    "nixpkgs=${inputs.nixpkgs.outPath}"
+  ];
 
   nix.gc = {
     automatic = true;

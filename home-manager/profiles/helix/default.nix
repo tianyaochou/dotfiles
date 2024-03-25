@@ -19,10 +19,14 @@
         };
         indent-guides = {
           render = true;
+          character = "╎";
+          skip-levels = 1;
         };
         whitespace = {
           tab = "all";
         };
+        preview-completion-insert = false;
+        completion-replace = true;
         lsp = {
           display-messages = true;
         };

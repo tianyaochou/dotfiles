@@ -1,24 +1,30 @@
-{ config, nixpkgs, ... }:
+{ config, packages, ... }:
 let username = "tianyaochou";
     email = "tianyaochou@fastmail.com";
 in
 {
   home-manager.users.${username} =
   { pkgs, profiles, ... }: {
-    imports = (with profiles; [ shell git emacs restic vscode helix ]);
+    imports = (with profiles; [ shell git emacs restic helix kakoune ]);
 
     home.packages = with pkgs;
       [
         # Programming
         opam
-        (python310.withPackages (p: with p;[ jupyter pygments ]))
         rustup
+        gnumake
+        clang
+        stack
+        vscode-langservers-extracted
 
-        nixpkgs.nixd
+        neovim
+
+        nixd
 
         iosevka-bin
         (iosevka-bin.override {variant = "slab";})
         (iosevka-bin.override {variant = "etoile";})
+        (iosevka-bin.override {variant = "aile";})
 
         # Utility
         du-dust # Dist Usage rewritten in rust
@@ -35,16 +41,11 @@ in
         haskellPackages.pandoc-crossref
         texlive.combined.scheme-full
         typst
-      ];
+      ] ++ [ packages.iosevka-nf ];
 
     programs.git = {
       userName = username;
       userEmail = email;
-    };
-
-    programs.direnv = {
-      enable = true;
-      nix-direnv.enable = true;
     };
 
     programs.gpg = {
