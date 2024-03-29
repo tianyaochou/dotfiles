@@ -26,7 +26,6 @@
           tab = "all";
         };
         preview-completion-insert = false;
-        completion-replace = true;
         lsp = {
           display-messages = true;
         };
@@ -42,6 +41,24 @@
           "C-n" = "move_line_down";
         };
       };
+    };
+    languages = {
+      language-server = {
+        emmet-language-server = {
+          command = "${pkgs.emmet-language-server}/bin/emmet-language-server";
+          args = ["--stdio"];
+        };
+      };
+      language = [
+        {
+          name = "html";
+          language-servers = ["emmet-language-server"];
+        }
+        {
+          name = "css";
+          language-servers = ["emmet-language-server"];
+        }
+      ];
     };
   };
 }

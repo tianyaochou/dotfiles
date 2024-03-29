@@ -57,7 +57,7 @@
   };
   programs.eza = {
     enable = true;
-    enableAliases = true;
+    enableFishIntegration = true;
     git = true;
   };
   programs.bat.enable = true;

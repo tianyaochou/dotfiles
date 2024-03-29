@@ -22,9 +22,9 @@ in
         nixd
 
         iosevka-bin
-        (iosevka-bin.override {variant = "slab";})
-        (iosevka-bin.override {variant = "etoile";})
-        (iosevka-bin.override {variant = "aile";})
+        (iosevka-bin.override {variant = "Slab";})
+        (iosevka-bin.override {variant = "Etoile";})
+        (iosevka-bin.override {variant = "Aile";})
 
         # Utility
         du-dust # Dist Usage rewritten in rust

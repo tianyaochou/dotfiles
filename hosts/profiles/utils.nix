@@ -22,6 +22,7 @@ in
       fd
       git
       bottom
+      btop
       jq
       manix
       moreutils

@@ -6,6 +6,8 @@ in
 {
   imports = [ ./cachix ];
 
+  nix.package = pkgs.nixVersions.unstable;
+
   nixpkgs.config.allowUnfree = true;
 
   nix.nixPath = [
