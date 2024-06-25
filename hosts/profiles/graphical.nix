@@ -1,10 +1,11 @@
 { pkgs, ... }:
 {
+
+  services.displayManager.sddm.enable = true;
   services.xserver = {
     enable = true;
-    displayManager.sddm.enable = true;
     desktopManager.plasma5.enable = true;
-    layout = "us";
+    xkb.layout = "us";
     videoDrivers = [ "i915" ];
   };
 

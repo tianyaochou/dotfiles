@@ -20,6 +20,7 @@ in
   ];
   homebrew.casks = [
     "steam"
+    "telegram"
     "appcleaner"
     "blockblock"
     "iina"

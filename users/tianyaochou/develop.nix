@@ -39,7 +39,6 @@ in
         fontconfig
 
         haskellPackages.pandoc-crossref
-        texlive.combined.scheme-full
         typst
       ] ++ [ packages.iosevka-nf ];
 

@@ -6,7 +6,7 @@ in
 {
   imports = [ ./cachix ];
 
-  nix.package = pkgs.nixVersions.unstable;
+  nix.package = pkgs.nixVersions.latest;
 
   nixpkgs.config.allowUnfree = true;
 
@@ -35,8 +35,5 @@ in
       extra-experimental-features = nix-command flakes
       builders-use-substitutes = true
       min-free = 536870912
-      keep-outputs = true
-      keep-derivations = true
-      fallback = true
     '';
 }

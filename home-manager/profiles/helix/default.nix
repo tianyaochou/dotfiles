@@ -48,6 +48,9 @@
           command = "${pkgs.emmet-language-server}/bin/emmet-language-server";
           args = ["--stdio"];
         };
+        typst-lsp = {
+          config = { exportPdf = "never"; };
+        };
       };
       language = [
         {
