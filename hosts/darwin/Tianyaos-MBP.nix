@@ -15,49 +15,34 @@ in
   homebrew.taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
   homebrew.brews = [
     "lux"
-    "gmp"
     "cloudflared"
   ];
   homebrew.casks = [
-    "steam"
     "telegram"
     "appcleaner"
     "blockblock"
     "iina"
     "keka"
-    "launchbar"
     "bettertouchtool"
     "thingsmacsandboxhelper"
     "shottr"
     "obsidian"
     "notion"
-    "busycal"
     "pdf-expert"
     "skim"
-    "racket"
-    "visual-studio-code"
     "dash"
     "vmware-fusion"
-    "zoom"
-    "zotero"
     "motrix"
     "transmit"
     "iterm2"
     "keybase"
-    "quarto"
-    "anki"
 
-    "blackhole-16ch"
     "soundsource"
     "macfuse"
 
-    "clashx"
     "calibre"
-    "netnewswire"
     "discord"
-    "drawio"
     "google-chrome"
-    "obsidian"
   ];
 
   # HACK: This is sloooooooooooowwwww
