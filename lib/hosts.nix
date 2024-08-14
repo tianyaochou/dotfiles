@@ -8,6 +8,7 @@ let home-manager-config = {
       nix.registry = {
         nixpkgs.flake = inputs.nixpkgs;
         dotfiles.flake = self;
+        fenix.flake = inputs.fenix;
       };
     };
 in {

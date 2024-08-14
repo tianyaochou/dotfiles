@@ -11,7 +11,8 @@ in
       [
         # Programming
         opam
-        rustup
+        cargo
+        cargo-generate
         gnumake
         clang
         stack
@@ -37,6 +38,12 @@ in
         ocrmypdf
         tesseract
         fontconfig
+
+        qemu
+        gdb
+        gef
+
+        wireshark-qt
 
         haskellPackages.pandoc-crossref
         typst

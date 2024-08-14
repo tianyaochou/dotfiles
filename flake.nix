@@ -33,6 +33,10 @@
 
     rk3588.url = "github:ryan4yin/nixos-rk3588";
     rk3588.inputs.nixpkgs.follows = "nixpkgs";
+
+    # Rust toolchain
+    fenix.url = "github:nix-community/fenix";
+    fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = inputs@{ self, home-manager, nix-darwin, sops-nix, nixpkgs, digga, nixinate, ... }:

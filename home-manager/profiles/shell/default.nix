@@ -21,7 +21,6 @@
     ];
 
     shellInit = ''
-      fish_add_path $HOME/.cargo/bin
       source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
     '';
 

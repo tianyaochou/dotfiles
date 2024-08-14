@@ -9,7 +9,6 @@
 
   environment = {
     systemPackages = with pkgs; [
-      terminal-notifier
       m-cli
     ];
 

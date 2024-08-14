@@ -12,7 +12,6 @@ in
   homebrew.global.brewfile = true;
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "uninstall";
-  homebrew.taps = [ "homebrew/cask" "homebrew/cask-drivers" ];
   homebrew.brews = [
     "lux"
     "cloudflared"
