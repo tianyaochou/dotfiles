@@ -1,4 +1,4 @@
-{ inputs, self, perSystem, withSystem, ... }: 
+{ inputs, self, perSystem, withSystem, lib, ... }: 
 let home-manager-config = {
       home-manager.useGlobalPkgs = true;
       home-manager.useUserPackages = true;
@@ -6,7 +6,7 @@ let home-manager-config = {
   };
     nix-path-config = {
       nix.registry = {
-        nixpkgs.flake = inputs.nixpkgs;
+        # nixpkgs.flake = inputs.nixpkgs;
         dotfiles.flake = self;
         fenix.flake = inputs.fenix;
       };

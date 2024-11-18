@@ -19,7 +19,7 @@
     devenv.url = "github:cachix/devenv";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
-    nix-darwin.inputs.nixpkgs.follows = "nixpkgs-edge";
+    nix-darwin.inputs.nixpkgs.follows = "nixpkgs";
 
     vscode-server.url = "github:nix-community/nixos-vscode-server";
 

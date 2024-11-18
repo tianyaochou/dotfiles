@@ -1,5 +1,5 @@
 { config, lib, pkgs, inputs, ... }: 
-let kernel = pkgs.linuxKernel.kernels.linux_6_8;#pkgs.callPackage "${inputs.rk3588}/pkgs/kernel/vendor.nix" {};
+let kernel = pkgs.callPackage "${inputs.rk3588}/pkgs/kernel/vendor.nix" {};#pkgs.linuxKernel.kernels.linux_6_11;
 in {
   boot = {
     kernelPackages = pkgs.linuxPackagesFor kernel;

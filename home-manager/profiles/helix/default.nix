@@ -51,6 +51,10 @@
         typst-lsp = {
           config = { exportPdf = "never"; };
         };
+        racket-langserver = {
+          command = "racket";
+          args = ["-l" "racket-langserver"];
+        };
       };
       language = [
         {
@@ -60,6 +64,10 @@
         {
           name = "css";
           language-servers = ["emmet-language-server"];
+        }
+        {
+          name = "racket";
+          language-servers = ["racket-langserver"];
         }
       ];
     };

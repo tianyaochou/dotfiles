@@ -15,6 +15,7 @@ in
   homebrew.brews = [
     "lux"
     "cloudflared"
+    "displayplacer"
   ];
   homebrew.casks = [
     "telegram"
@@ -26,6 +27,7 @@ in
     "thingsmacsandboxhelper"
     "shottr"
     "obsidian"
+    "logseq"
     "notion"
     "pdf-expert"
     "skim"
@@ -38,6 +40,10 @@ in
 
     "soundsource"
     "macfuse"
+
+    "kicad"
+    "freecad"
+    "racket"
 
     "calibre"
     "discord"

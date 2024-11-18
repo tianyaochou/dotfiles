@@ -5,7 +5,7 @@ in
 {
   home-manager.users.${username} =
   { pkgs, profiles, ... }: {
-    imports = (with profiles; [ shell git emacs restic helix kakoune ]);
+    imports = (with profiles; [ shell git restic helix kakoune ]);
 
     home.packages = with pkgs;
       [
@@ -16,9 +16,8 @@ in
         gnumake
         clang
         stack
-        vscode-langservers-extracted
 
-        neovim
+        vscode
 
         nixd
 
@@ -42,6 +41,7 @@ in
         qemu
         gdb
         gef
+        tio
 
         wireshark-qt
 
