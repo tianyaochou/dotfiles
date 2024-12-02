@@ -1,14 +1,6 @@
 { pkgs, ... }:
 {
-
   services.displayManager.sddm.enable = true;
-  services.xserver = {
-    enable = true;
-    desktopManager.plasma5.enable = true;
-    xkb.layout = "us";
-    videoDrivers = [ "i915" ];
-  };
-
-  services.xrdp.enable = true;
-  services.xrdp.defaultWindowManager = "startplasma-x11";
+  services.displayManager.sddm.wayland.enable = true;
+  services.desktopManager.plasma6.enable = true;
 }

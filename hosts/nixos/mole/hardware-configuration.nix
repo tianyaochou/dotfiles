@@ -1,38 +1,64 @@
-{ config, lib, pkgs, inputs, ... }: 
-let kernel = pkgs.linuxKernel.kernels.linux_6_11;#pkgs.callPackage "${inputs.rk3588}/pkgs/kernel/vendor.nix" {};
+{ pkgs, lib, inputs, ... }:
+let kernel = pkgs.callPackage "${inputs.rk3588}/pkgs/kernel/vendor.nix" {};
 in {
+  powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
+
   boot = {
     kernelPackages = pkgs.linuxPackagesFor kernel;
-    loader.systemd-boot = {
+    loader.grub = {
+      device = "nodev";
+      efiSupport = true;
+      efiInstallAsRemovable = true;
       enable = true;
       configurationLimit = 2;
       extraFiles = {
         "dtb/base/rk3588-orangepi-5-plus.dtb" = "${kernel}/dtbs/rockchip/rk3588-orangepi-5-plus.dtb";
       };
     };
-    loader.efi.canTouchEfiVariables = true;
+    initrd.availableKernelModules = lib.mkForce [
+      "nvme"
+      "mmc_block"
+      "hid"
+      "dm_mod" # for LVM & LUKS
+      "dm_crypt" # for LUKS
+      "input_leds"
+    ];
+
     kernelParams = [
+      "rootwait"
+
       "earlycon"
-      "console=ttyS2,1500000" # serial port
-      "console=tty1" # HDMI
+      "consoleblank=0"
+      "console=tty1"
+
+      # docker optimizations
+      "cgroup_enable=cpuset"
+      "cgroup_memory=1"
+      "cgroup_enable=memory"
+      "swapaccount=1"
+    ];
+
+    supportedFilesystems = lib.mkForce [
+      "vfat"
+      "fat32"
+      "extfat"
+      "ext4"
+      "btrfs"
     ];
   };
 
   hardware = {
     deviceTree = {
+      # https://github.com/armbian/build/blob/f9d7117/config/boards/orangepi5-plus.wip#L10C51-L10C51
       name = "rockchip/rk3588-orangepi-5-plus.dtb";
-      overlays = [];
+      overlays = [
+      ];
     };
-    enableRedistributableFirmware = true;
-    firmware = [(pkgs.callPackage "${inputs.rk3588}/pkgs/orangepi-firmware" {})];
-  };
 
-  fileSystems."/" = {
-    device = "/dev/disk/by-uuid/51f3bb58-7085-478e-9c89-230a1fc8f9bc";
-    fsType = "btrfs";
-  };
-  fileSystems."/boot" = {
-    device = "/dev/disk/by-uuid/AD8E-21CA";
-    fsType = "vfat";
+    firmware = [
+      (pkgs.callPackage "${inputs.rk3588}/pkgs/orangepi-firmware" {})
+    ];
+
+    enableRedistributableFirmware = lib.mkForce true;
   };
 }

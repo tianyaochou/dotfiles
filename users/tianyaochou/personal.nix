@@ -5,7 +5,7 @@ let
 in
 {
   users.users.${username} = {
-    extraGroups = [ "networkmanager" "libvirtd" ];
+    extraGroups = [ "networkmanager" ];
     packages = with pkgs; [
       firefox
     ];

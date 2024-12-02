@@ -28,7 +28,7 @@
           nixinate = {
             host = "mole";
             sshUser = "tianyaochou";
-            buildOn = "remote";
+            buildOn = "local";
             substituteOnTarget = true;
             hermetic = false;
           };
@@ -45,6 +45,6 @@
         };
       };
 
-      apps = inputs.nixinate.nixinate.x86_64-darwin self;
+      apps = inputs.nixinate.nixinate.x86_64-linux self;
     };
 }
