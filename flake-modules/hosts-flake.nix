@@ -35,6 +35,17 @@
           host = mole;
           system = "aarch64-linux";
         };
+        kaelder = self.lib.mkNixOSHost {
+          nixinate = {
+            host = "kaelder";
+            sshUser = "tianyaochou";
+            buildOn = "remote";
+            substituteOnTarget = true;
+            hermetic = false;
+          };
+          host = kaelder;
+          system = "x86_64-linux";
+        };
       };
 
       darwinConfigurations = with hosts.darwin; {

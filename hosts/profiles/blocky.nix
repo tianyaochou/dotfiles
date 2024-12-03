@@ -3,6 +3,7 @@
   services.blocky = {
     enable = true;
     settings = {
+      ports.http = 4000;
       upstreams = {
         groups = {
           default = ["https://cloudflare-dns.com/dns-query" "tcp-tls:1.1.1.1:853"];
