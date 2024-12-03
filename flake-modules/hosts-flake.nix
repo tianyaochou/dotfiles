@@ -28,7 +28,7 @@
           nixinate = {
             host = "mole";
             sshUser = "tianyaochou";
-            buildOn = "local";
+            buildOn = "remote";
             substituteOnTarget = true;
             hermetic = false;
           };

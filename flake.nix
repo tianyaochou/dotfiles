@@ -31,7 +31,7 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
-    rk3588.url = "github:ryan4yin/nixos-rk3588";
+    rk3588.url = "github:jsternberg/nixos-rk3588";
     rk3588.inputs.nixpkgs.follows = "nixpkgs";
 
     # Rust toolchain

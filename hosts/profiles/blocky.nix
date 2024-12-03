@@ -14,6 +14,14 @@
           "https://blocklistproject.github.io/Lists/alt-version/ads-nl.txt"
         ];
       };
+      prometheus = {
+        enable = true;
+        path = "/metrics";
+      };
     };
+  };
+
+  networking.firewall.interfaces.enP3p49s0 = {
+    allowedUDPPorts = [ 53 ];
   };
 }

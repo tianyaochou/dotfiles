@@ -709,15 +709,15 @@
         "pre-commit-hooks": "pre-commit-hooks"
       },
       "locked": {
-        "lastModified": 1730468442,
-        "narHash": "sha256-9OhrTUoVHDSsqWDsWsmMlrQGZI5zAeRbcP3rNqe7oT4=",
-        "owner": "ryan4yin",
+        "lastModified": 1733163550,
+        "narHash": "sha256-XExOX8kn5meVblipJiXoPil2REM2uWULwH5BbZXkTx0=",
+        "owner": "jsternberg",
         "repo": "nixos-rk3588",
-        "rev": "981fc1b7e7ae3b939af5fe73518a2ca7b1392977",
+        "rev": "bae2597af946f2e6cf1b88c19b17dce90b7302ea",
         "type": "github"
       },
       "original": {
-        "owner": "ryan4yin",
+        "owner": "jsternberg",
         "repo": "nixos-rk3588",
         "type": "github"
       }

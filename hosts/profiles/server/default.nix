@@ -16,6 +16,7 @@
 
   services.openssh.enable = true;
   services.openssh.openFirewall = true;
+  services.fail2ban.enable = true;
   services.tailscale.enable = true;
   networking.firewall.trustedInterfaces = [ "tailscale0" ];
 
