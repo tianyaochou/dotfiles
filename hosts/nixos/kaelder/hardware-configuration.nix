@@ -6,5 +6,5 @@
     device = "/dev/xvda";
   };
 
-  networking.useDHCP = lib.mkDefault true;
+  networking.useNetworkd = true;
 }
