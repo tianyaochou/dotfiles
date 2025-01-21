@@ -48,8 +48,8 @@
 
   programs.zoxide.enable = true;
   programs.skim.enable = true;
-  # programs.nix-index.enable = true;
-  programs.command-not-found.enable = true;
+  programs.nix-index.enable = true;
+  #programs.command-not-found.enable = true;
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;

@@ -8,11 +8,19 @@ let repo = "s3:http://mainframe:9000/restic"; in
     wraps = "restic";
   };
 
-  launchd.agents.restic-backup-Projects = {
+  launchd.agents.restic-backup-Projects = let
+    exclude_file = (pkgs.writeText "exclude-list" ''
+      .*
+      Applications
+      tianyaochou/Library
+      Virtual Machines.localized
+      
+    '');
+  in {
     enable = true;
     config = {
       ProgramArguments = [ "/etc/profiles/per-user/tianyaochou/bin/fish"
-                           "-c" "pmset -g ac | grep 'No adapter attached.' || repo-restic backup /Users/tianyaochou/Projects && repo-restic forget --keep-daily 7 --keep-monthly 12 --keep-hourly 24" ];
+                           "-c" "pmset -g ac | grep 'No adapter attached.' || repo-restic backup /Users/tianyaochou/ --exclude-file ${exclude_file} && repo-restic forget --keep-daily 7 --keep-monthly 12 --keep-hourly 24" ];
       StartCalendarInterval = [
         {
           Minute = 0;

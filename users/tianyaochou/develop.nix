@@ -1,4 +1,4 @@
-{ config, packages, ... }:
+{ config, lib, packages, ... }:
 let username = "tianyaochou";
     email = "tianyaochou@fastmail.com";
 in
@@ -19,7 +19,7 @@ in
 
         vscode
 
-        nixd
+        nil
 
         iosevka-bin
         (iosevka-bin.override {variant = "Slab";})
@@ -66,6 +66,6 @@ in
       ];
     };
 
-    home.stateVersion = "22.11";
+    home.stateVersion = "24.11";
   };
 }

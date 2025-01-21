@@ -17,4 +17,9 @@
 		"net.ipv4.conf.all.forwarding" = true;
     "net.ipv6.conf.all.forwarding" = true;
 	};
+
+  boot.postBootCommands = """
+    echo 'none' > /sys/class/leds/green_led/trigger
+    echo 'none' > /sys/class/leds/blue_led/trigger
+  """;
 }
