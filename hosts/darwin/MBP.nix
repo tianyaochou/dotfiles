@@ -36,7 +36,9 @@ in
     "motrix"
     "transmit"
     "iterm2"
+    "amethyst"
     "keybase"
+    "jabref"
 
     "soundsource"
     "macfuse"
@@ -44,6 +46,7 @@ in
     "kicad"
     "freecad"
     "racket"
+    "zed"
 
     "calibre"
     "discord"

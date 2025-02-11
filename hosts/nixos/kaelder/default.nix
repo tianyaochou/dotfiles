@@ -1,6 +1,6 @@
 { config, profiles, pkgs, users, ... }:
 {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops ]) ++ (with users.tianyaochou; [ nixos server ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops restic ]) ++ (with users.tianyaochou; [ nixos server ]);
 
   systemd.network.enable = true;
   sops.secrets."ip" = {
@@ -26,7 +26,7 @@
   };
   environment.etc."systemd/network/20-enX0.network".source = config.sops.templates."enX0-config".path;
 
-  networking.hostName = "kaeler";
+  networking.hostName = "kaelder";
 
   fileSystems."/" = {
     device = "/dev/xvda3";
@@ -44,5 +44,13 @@
       "compress=zstd"
     ];
     neededForBoot = true;
+  };
+  fileSystems."/data" = {
+    device = "/dev/xvdb1";
+    fsType = "btrfs";
+    options = [
+      "subvol=data"
+      "compress=zstd"
+    ];
   };
 }

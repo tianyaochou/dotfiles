@@ -1,5 +1,5 @@
 { pkgs, profiles, users, ... }: {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops blocky jellyfin ]) ++ (with users.tianyaochou; [ nixos server ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops blocky jellyfin rsyncd ]) ++ (with users.tianyaochou; [ nixos server ]);
 
   fileSystems."/" = {
     device = "/dev/mmcblk0p2";
@@ -18,8 +18,5 @@
     "net.ipv6.conf.all.forwarding" = true;
 	};
 
-  boot.postBootCommands = """
-    echo 'none' > /sys/class/leds/green_led/trigger
-    echo 'none' > /sys/class/leds/blue_led/trigger
-  """;
+  boot.postBootCommands = "echo 'none' > /sys/class/leds/green_led/trigger\necho 'none' > /sys/class/leds/blue_led/trigger";
 }
