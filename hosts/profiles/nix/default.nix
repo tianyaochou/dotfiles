@@ -14,9 +14,36 @@ in
     "nixpkgs=${inputs.nixpkgs.outPath}"
   ];
 
+  nix.distributedBuilds = true;
+  nix.buildMachines = let
+    sshKey = if isDarwin then "/Users/tianyaochou/.ssh/id_rsa" else "/root/.ssh/local-builder";
+    sshUser = "remote-builder";
+    protocol = "ssh-ng";
+    supportedFeatures = [ "nixos-test" "big-parallel" "kvm" ];
+  in
+  [
+    {
+      inherit sshKey sshUser protocol supportedFeatures;
+      hostName = "mainframe";
+      systems = [
+          "x86_64-linux"
+          "aarch64-linux"
+      ];
+      maxJobs = 32;
+      speedFactor = 32;
+    }
+    {
+      inherit sshKey sshUser protocol supportedFeatures;
+      hostName = "gateway";
+      system = "aarch64-linux";
+      maxJobs = 2;
+      speedFactor = 8;
+    }
+  ];
+
   nix.gc = {
     automatic = true;
-    options = "--delete-older-than 21d";
+    dates = lib.mkIf (config.networking.hostName == "mainframe") "monthly";
   };
 
   nix.settings = {

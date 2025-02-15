@@ -43,6 +43,12 @@
       nix_shell = {
         heuristic = if pkgs.stdenv.isDarwin then false else true;
       };
+      direnv = {
+        disabled = false;
+      };
+      time = {
+        disabled = false;
+      };
     };
   };
 

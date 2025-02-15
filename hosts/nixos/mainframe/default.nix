@@ -1,6 +1,6 @@
 { config, pkgs, profiles, users, ... }:
 {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops graphical virtualisation dual-boot minio ]) ++ (with users.tianyaochou; [ nixos personal server develop vscode-server ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server remote-builder utils sops graphical virtualisation dual-boot minio ]) ++ (with users.tianyaochou; [ nixos personal server develop vscode-server ]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

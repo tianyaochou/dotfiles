@@ -1,10 +1,25 @@
 { pkgs, lib, inputs, ... }:
-let kernel = pkgs.callPackage "${inputs.rk3588}/pkgs/kernel/vendor.nix" {};
+let kernel = pkgs.buildLinux {
+  modDirVersion = "6.13.0";
+  version = "6.13.0";
+  src = fetchGit {
+    url = "file:///home/tianyaochou/Projects/linux-rockchip";
+    rev = "188b245f91764c7c5246517a4422767db11d8bf9";
+  };
+};
 in {
   powerManagement.cpuFreqGovernor = lib.mkDefault "ondemand";
 
   boot = {
     kernelPackages = pkgs.linuxPackagesFor kernel;
+    kernelPatches = [{
+      name = "Enable HDMIRX";
+      patch = null;
+      extraStructuredConfig = {
+        VIDEO_SYNOPSYS_HDMIRX = lib.kernel.module;
+        VIDEO_SYNOPSYS_HDMIRX_LOAD_DEFAULT_EDID = lib.kernel.yes;
+      };
+    }];
     loader.grub = {
       device = "nodev";
       efiSupport = true;
@@ -19,8 +34,6 @@ in {
       "nvme"
       "mmc_block"
       "hid"
-      "dm_mod" # for LVM & LUKS
-      "dm_crypt" # for LUKS
       "input_leds"
     ];
 
@@ -49,7 +62,6 @@ in {
 
   hardware = {
     deviceTree = {
-      # https://github.com/armbian/build/blob/f9d7117/config/boards/orangepi5-plus.wip#L10C51-L10C51
       name = "rockchip/rk3588-orangepi-5-plus.dtb";
       overlays = [
       ];

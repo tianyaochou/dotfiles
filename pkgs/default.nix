@@ -6,4 +6,5 @@
   iosevka-bin-nf = pkgs.callPackage ./iosevka-bin-nf.nix {};
   iosevka-nf = pkgs.callPackage ./iosevka-nf.nix {};
   usbutils = pkgs.callPackage ./usbutils.nix {};
+  v4l-utils = pkgs.callPackage ./v4l-utils.nix {};
 }

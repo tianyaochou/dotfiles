@@ -1,7 +1,7 @@
 { config, users, pkgs, profiles, ... }:
 
 {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server sops miniflux caddy wordpress metrics ]) ++ (with users.tianyaochou; [ nixos server ]);
+  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server remote-builder sops miniflux caddy wordpress metrics ]) ++ (with users.tianyaochou; [ nixos server ]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;

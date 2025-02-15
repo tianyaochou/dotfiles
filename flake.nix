@@ -42,7 +42,7 @@
   outputs = inputs@{ self, home-manager, nix-darwin, sops-nix, nixpkgs, digga, nixinate, ... }:
 
     inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-      systems = [ "x86_64-linux" "aarch64-darwin" "aarch64-darwin" "x86_64-darwin" ];
+      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
 
       perSystem = { config, pkgs, ... }:{
         packages = import ./pkgs { inherit pkgs; };
