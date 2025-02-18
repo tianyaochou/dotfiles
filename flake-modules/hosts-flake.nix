@@ -1,5 +1,5 @@
 { self, inputs, ... }:{
-  flake = let hosts = inputs.digga.lib.rakeLeaves ../hosts;
+  flake = let hosts = inputs.haumea.lib.load { src = ../hosts; loader = inputs.haumea.lib.loaders.path; };
     in {
       nixosConfigurations = with hosts.nixos; {
         mainframe = self.lib.mkNixOSHost {
@@ -28,8 +28,8 @@
           nixinate = {
             host = "mole";
             sshUser = "tianyaochou";
-            buildOn = "remote";
-            substituteOnTarget = true;
+            buildOn = "local";
+            substituteOnTarget = false;
             hermetic = false;
           };
           host = mole;

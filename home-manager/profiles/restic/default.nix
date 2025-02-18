@@ -26,7 +26,7 @@ let repo = "s3:http://mainframe:9000/restic";
   in {
     enable = true;
     config = {
-      ProgramArguments = [ "/etc/profiles/per-user/tianyaochou/bin/fish"
+      ProgramArguments = [ "/run/current-system/sw/bin/fish"
                            "-c" "pmset -g ac | grep 'No adapter attached.' || remote-restic backup /Users/tianyaochou/ --exclude-file ${exclude_file} && remote-restic forget --keep-daily 7 --keep-monthly 12 --keep-hourly 24 && repo-restic copy --from-repo ${remote} latest && repo-restic forget --keep-hourly 24 --keep-daily 7"];
       StartCalendarInterval = [
         {
