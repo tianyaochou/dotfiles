@@ -1,9 +1,9 @@
-{ super, ... }:
-let user = super.default; in
-{
+{super, ...}: let
+  user = super.default;
+in {
   users.users.${user.username} = {
     openssh = {
-      authorizedKeys.keyFiles = [ user.keyFile ];
+      authorizedKeys.keyFiles = [user.keyFile];
     };
   };
 }

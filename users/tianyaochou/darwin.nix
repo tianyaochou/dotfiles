@@ -1,7 +1,6 @@
-{ super, ... }:
-{ pkgs, ... }:
-let username = super.default.username; in
-{
+{super, ...}: {pkgs, ...}: let
+  username = super.default.username;
+in {
   users.users.tianyaochou = {
     name = username;
     shell = pkgs.fish;

@@ -1,5 +1,14 @@
-{ lib, stdenv, fetchurl, substituteAll, autoreconfHook, pkg-config, libusb1, hwdata, python3 }:
-
+{
+  lib,
+  stdenv,
+  fetchurl,
+  substituteAll,
+  autoreconfHook,
+  pkg-config,
+  libusb1,
+  hwdata,
+  python3,
+}:
 stdenv.mkDerivation rec {
   pname = "usbutils";
   version = "017";
@@ -23,10 +32,10 @@ stdenv.mkDerivation rec {
     })
   ];
 
-  nativeBuildInputs = [ autoreconfHook pkg-config ];
-  buildInputs = [ libusb1 python3 ];
+  nativeBuildInputs = [autoreconfHook pkg-config];
+  buildInputs = [libusb1 python3];
 
-  outputs = [ "out" "man" "python" ];
+  outputs = ["out" "man" "python"];
   postInstall = ''
     moveToOutput "bin/lsusb.py" "$python"
   '';
@@ -34,7 +43,7 @@ stdenv.mkDerivation rec {
   meta = with lib; {
     homepage = "http://www.linux-usb.org/";
     description = "Tools for working with USB devices, such as lsusb";
-    maintainers = with maintainers; [ cafkafk ];
+    maintainers = with maintainers; [cafkafk];
     license = licenses.gpl2Plus;
     platforms = platforms.linux ++ platforms.darwin;
     mainProgram = "lsusb";

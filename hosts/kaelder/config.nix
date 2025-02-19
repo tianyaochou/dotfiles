@@ -1,16 +1,20 @@
-{ self, ... }:
-{ config, profiles, pkgs, users, ... }:
-{
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops restic ]);
+{self, ...}: {
+  config,
+  profiles,
+  pkgs,
+  users,
+  ...
+}: {
+  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server utils sops restic]);
 
   systemd.network.enable = true;
   sops.secrets."ip" = {
     sopsFile = ./secrets.yaml;
-    reloadUnits = [ "systemd-networkd.service" ];
+    reloadUnits = ["systemd-networkd.service"];
   };
   sops.secrets."gateway" = {
     sopsFile = ./secrets.yaml;
-    reloadUnits = [ "systemd-networkd.service" ];
+    reloadUnits = ["systemd-networkd.service"];
   };
   sops.templates."enX0-config" = {
     content = ''

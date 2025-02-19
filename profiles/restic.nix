@@ -1,9 +1,8 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   services.restic.server = {
     enable = true;
     prometheus = true;
-    extraFlags = [ "--no-auth" ];
+    extraFlags = ["--no-auth"];
     dataDir = "/data/restic";
   };
 }

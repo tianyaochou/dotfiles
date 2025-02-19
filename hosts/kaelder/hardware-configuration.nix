@@ -1,6 +1,5 @@
-{ lib, ... }:
-{
-  boot.initrd.availableKernelModules = [ "xen-blkfront" "xen-kbdfront" ];
+{lib, ...}: {
+  boot.initrd.availableKernelModules = ["xen-blkfront" "xen-kbdfront"];
   boot.loader.grub = {
     enable = true;
     device = "/dev/xvda";

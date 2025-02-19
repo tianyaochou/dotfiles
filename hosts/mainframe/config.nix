@@ -1,12 +1,10 @@
-{ super, ... }:
-{ profiles, ... }:
-{
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server remote-builder utils sops graphical virtualisation dual-boot minio ]);
+{super, ...}: {profiles, ...}: {
+  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder utils sops graphical virtualisation dual-boot minio]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
-  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
+  boot.binfmt.emulatedSystems = ["aarch64-linux"];
 
   networking.hostName = super.meta.hostname;
   networking.networkmanager.enable = true;

@@ -1,8 +1,8 @@
-{ pkgs
-, lib
-, kernel ? pkgs.linuxKernel.kernels.linux_testing
+{
+  pkgs,
+  lib,
+  kernel ? pkgs.linuxKernel.kernels.linux_testing,
 }:
-
 pkgs.stdenv.mkDerivation {
   pname = "snps-hdmirx-kernel-module";
   inherit (kernel) src version postPatch nativeBuildInputs;

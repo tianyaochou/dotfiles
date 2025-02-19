@@ -1,4 +1,10 @@
-{ lib, stdenv, fetchzip, ... }: stdenv.mkDerivation rec {
+{
+  lib,
+  stdenv,
+  fetchzip,
+  ...
+}:
+stdenv.mkDerivation rec {
   name = "Iosevka Nerd Font";
   pname = "iosevka-nf";
   version = "3.1.1";

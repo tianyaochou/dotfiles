@@ -1,6 +1,10 @@
-{ self, config, lib, pkgs, ... }:
-
 {
+  self,
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   environment = {
     systemPackages = with pkgs; [
       m-cli
