@@ -1,5 +1,9 @@
-{ self, super, home, ... }:
 {
+  self,
+  super,
+  home,
+  ...
+}: {
   username = "tianyaochou";
   email = "tianyaochou@fastmail.com";
   keyFile = builtins.fetchurl {
@@ -9,23 +13,23 @@
 
   hosts = {
     Tianyaos-MacBook-Pro = {
-      profiles = [ super.darwin ];
-      homeProfiles = [ home.suites.workstation ];
+      profiles = [super.darwin];
+      homeProfiles = [home.suites.workstation];
     };
     mainframe = {
-      profiles = [ super.nixos super.server ];
-      homeProfiles = [ home.suites.workstation ];
+      profiles = [super.nixos super.server];
+      homeProfiles = [home.suites.workstation];
     };
     mole = {
-      profiles = [ super.nixos super.server ];
+      profiles = [super.nixos super.server];
       homeProfiles = [];
     };
     kaelder = {
-      profiles = [ super.nixos super.server ];
+      profiles = [super.nixos super.server];
       homeProfiles = [];
     };
     gateway = {
-      profiles = [ super.nixos super.server ];
+      profiles = [super.nixos super.server];
       homeProfiles = [];
     };
   };

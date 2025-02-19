@@ -1,15 +1,25 @@
-{ config, lib, pkgs, ... }:
-let ids = [ "1002:73df" "1002:ab28" ]; in
 {
-  boot.kernelParams = [ "intel_iommu=on" ("vfio-pci.ids=" + lib.concatStringsSep "," ids)];
-  boot.initrd.kernelModules = [ "vfio_pci" "vfio" "vfio_iommu_type1" ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: let
+  ids = ["1002:73df" "1002:ab28"];
+in {
+  boot.kernelParams = ["intel_iommu=on" ("vfio-pci.ids=" + lib.concatStringsSep "," ids)];
+  boot.initrd.kernelModules = ["vfio_pci" "vfio" "vfio_iommu_type1"];
 
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
       swtpm.enable = true;
       ovmf.enable = true;
-      ovmf.packages = [ (pkgs.OVMFFull.override {secureBoot = true; tpmSupport = true; }) ];
+      ovmf.packages = [
+        (pkgs.OVMFFull.override {
+          secureBoot = true;
+          tpmSupport = true;
+        })
+      ];
       vhostUserPackages = [pkgs.virtiofsd];
     };
   };
@@ -25,5 +35,5 @@ let ids = [ "1002:73df" "1002:ab28" ]; in
   };
 
   virtualisation.spiceUSBRedirection.enable = true;
-  environment.systemPackages = with pkgs; [ virt-manager win-virtio spice win-spice ];
+  environment.systemPackages = with pkgs; [virt-manager win-virtio spice win-spice];
 }

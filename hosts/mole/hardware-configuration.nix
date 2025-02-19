@@ -1,13 +1,18 @@
-{ self, ... }:
-{ pkgs, lib, packages, inputs, ... }:
-let kernel = pkgs.buildLinux {
-  modDirVersion = "6.13.0";
-  version = "6.13.0";
-  src = fetchGit {
-    url = "file:///home/tianyaochou/Projects/linux-rockchip";
-    rev = "188b245f91764c7c5246517a4422767db11d8bf9";
+{self, ...}: {
+  pkgs,
+  lib,
+  packages,
+  inputs,
+  ...
+}: let
+  kernel = pkgs.buildLinux {
+    modDirVersion = "6.13.0";
+    version = "6.13.0";
+    src = fetchGit {
+      url = "file:///home/tianyaochou/Projects/linux-rockchip";
+      rev = "188b245f91764c7c5246517a4422767db11d8bf9";
+    };
   };
-};
   mainline = pkgs.linuxKernel.kernels.linux_testing;
   selectedKernel = mainline;
 in {
@@ -15,7 +20,7 @@ in {
 
   boot = {
     kernelPackages = pkgs.linuxPackagesFor selectedKernel;
-    extraModulePackages = [ packages.snps-hdmirx ];
+    extraModulePackages = [packages.snps-hdmirx];
     loader.grub = {
       device = "nodev";
       efiSupport = true;
@@ -23,7 +28,7 @@ in {
       enable = true;
       configurationLimit = 2;
       extraFiles = {
-        "dtb/base/rk3588-orangepi-5-plus.dtb" = ./rk3588-orangepi-5-plus.dtb;#"${selectedKernel}/dtbs/rockchip/rk3588-orangepi-5-plus.dtb";
+        "dtb/base/rk3588-orangepi-5-plus.dtb" = ./rk3588-orangepi-5-plus.dtb; #"${selectedKernel}/dtbs/rockchip/rk3588-orangepi-5-plus.dtb";
       };
     };
     initrd.availableKernelModules = lib.mkForce [

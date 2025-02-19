@@ -1,19 +1,23 @@
-{ config, lib, pkgs, ... }:
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   sops.secrets."config.yaml" = {
     sopsFile = ./config.yaml;
     format = "binary";
-    restartUnits = [ "clash-meta.service" ];
+    restartUnits = ["clash-meta.service"];
   };
 
-  environment.systemPackages = [ pkgs.clash-meta ];
+  environment.systemPackages = [pkgs.clash-meta];
 
   systemd.services.clash-meta = {
     script = ''
       ${pkgs.clash-meta}/bin/clash-meta -f ${config.sops.secrets."config.yaml".path} -d /var/lib/clash
     '';
     wantedBy = ["multi-user.target"];
-    after = [ "network-online.target" ];
+    after = ["network-online.target"];
   };
 
   system.activationScripts.mkClashDir = lib.stringAfter ["var"] ''

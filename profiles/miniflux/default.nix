@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   sops.secrets."ADMIN_USERNAME" = {
     sopsFile = ./secrets.yaml;
     restartUnits = ["miniflux.service"];
@@ -11,9 +14,9 @@
   };
   sops.templates."miniflux-admin-credential" = {
     content = ''
-            ADMIN_USERNAME=${config.sops.placeholder."ADMIN_USERNAME"}
-            ADMIN_PASSWORD=${config.sops.placeholder."ADMIN_PASSWORD"}
-            '';
+      ADMIN_USERNAME=${config.sops.placeholder."ADMIN_USERNAME"}
+      ADMIN_PASSWORD=${config.sops.placeholder."ADMIN_PASSWORD"}
+    '';
   };
 
   services.miniflux = {

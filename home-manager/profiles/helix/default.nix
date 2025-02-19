@@ -1,6 +1,9 @@
-{ config, lib, pkgs, ... }:
-
 {
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
   programs.helix = {
     enable = true;
     settings = {
@@ -49,7 +52,7 @@
           args = ["--stdio"];
         };
         typst-lsp = {
-          config = { exportPdf = "never"; };
+          config = {exportPdf = "never";};
         };
         racket-langserver = {
           command = "racket";

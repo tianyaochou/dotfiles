@@ -1,5 +1,4 @@
-{pkgs, ...}:
-{
+{pkgs, ...}: {
   services.blocky = {
     enable = true;
     settings = {
@@ -23,6 +22,6 @@
   };
 
   networking.firewall.interfaces.enP3p49s0 = {
-    allowedUDPPorts = [ 53 ];
+    allowedUDPPorts = [53];
   };
 }

@@ -12,8 +12,8 @@
 
     haumea.url = "github:nix-community/haumea";
     haumea.inputs.nixpkgs.follows = "nixpkgs";
-
     flake-parts.url = "github:hercules-ci/flake-parts";
+
     devenv.url = "github:cachix/devenv";
 
     nix-darwin.url = "github:LnL7/nix-darwin";
@@ -29,6 +29,9 @@
     sops-nix.url = "github:Mic92/sops-nix";
     sops-nix.inputs.nixpkgs.follows = "nixpkgs";
 
+    git-hooks-nix.url = "github:cachix/git-hooks.nix";
+    git-hooks-nix.inputs.nixpkgs.follows = "nixpkgs";
+
     rk3588.url = "github:jsternberg/nixos-rk3588";
     rk3588.inputs.nixpkgs.follows = "nixpkgs";
 
@@ -37,14 +40,13 @@
     fenix.inputs.nixpkgs.follows = "nixpkgs";
   };
 
-  outputs = inputs@{ self, ... }:
-
-    inputs.flake-parts.lib.mkFlake { inherit inputs; } {
-
-      systems = [ "x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin" ];
+  outputs = inputs @ {self, ...}:
+    inputs.flake-parts.lib.mkFlake {inherit inputs;} {
+      systems = ["x86_64-linux" "aarch64-linux" "aarch64-darwin" "x86_64-darwin"];
 
       imports = [
         inputs.devenv.flakeModule
+        inputs.git-hooks-nix.flakeModule
         ./flake-modules/hosts.nix
         ./flake-modules/profiles.nix
         ./flake-modules/users.nix
@@ -52,10 +54,23 @@
         ./flake-modules/toplevel-config.nix
       ];
 
-      perSystem = { pkgs, system, ... }:{
-        packages = {
-          deploy-rs = inputs.deploy-rs.packages.${system}.default;
-        } // import ./pkgs { inherit pkgs; };
+      perSystem = {
+        config,
+        pkgs,
+        system,
+        lib,
+        ...
+      }: {
+        packages =
+          {
+            deploy-rs = inputs.deploy-rs.packages.${system}.default;
+          }
+          // import ./pkgs {inherit pkgs;};
+
+        devShells.default = config.pre-commit.devShell;
+
+        pre-commit.settings.hooks.alejandra.enable = true;
+        pre-commit.settings.hooks.trim-trailing-whitespace.enable = true;
       };
     };
 }

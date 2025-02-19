@@ -1,5 +1,11 @@
-{ pkgs, user, profiles, packages, ... }: {
-  imports = (with profiles; [ shell git restic helix kakoune ]);
+{
+  pkgs,
+  user,
+  profiles,
+  packages,
+  ...
+}: {
+  imports = with profiles; [shell git restic helix kakoune];
 
   home.packages = with pkgs;
     [
@@ -41,7 +47,8 @@
 
       haskellPackages.pandoc-crossref
       typst
-    ] ++ [ packages.iosevka-nf ];
+    ]
+    ++ [packages.iosevka-nf];
 
   programs.git = {
     userName = user.username;

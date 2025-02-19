@@ -9,7 +9,6 @@
   libjpeg,
   udev,
 }:
-
 stdenv.mkDerivation rec {
   pname = "v4l-utils";
   version = "1.28.1";
@@ -26,7 +25,7 @@ stdenv.mkDerivation rec {
   ];
 
   buildInputs =
-    [ udev ]
+    [udev]
     ++ lib.optional (!stdenv.hostPlatform.isGnu) argp-standalone;
 
   configurePhase = ''
@@ -42,7 +41,7 @@ stdenv.mkDerivation rec {
     DESTDIR=$out ninja -C build/ install
   '';
 
-  propagatedBuildInputs = [ libjpeg ];
+  propagatedBuildInputs = [libjpeg];
 
   postPatch = ''
     patchShebangs utils/
@@ -58,7 +57,7 @@ stdenv.mkDerivation rec {
       lgpl21Plus
       gpl2Plus
     ];
-    maintainers = with maintainers; [ codyopel ];
+    maintainers = with maintainers; [codyopel];
     platforms = platforms.linux;
   };
 }

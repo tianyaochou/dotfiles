@@ -1,7 +1,10 @@
-{ config, lib, pkgs, ... }:
-
 {
-  home.packages = [ pkgs.fish ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  home.packages = [pkgs.fish];
   programs.fish = {
     enable = true;
     plugins = with pkgs; [
@@ -32,6 +35,8 @@
   programs.starship = {
     enable = true;
     settings = {
+      format = "$all";
+      right_format = "$time";
       character = {
         success_symbol = "[λ](bold green)";
         error_symbol = "[λ](bold red)";
@@ -41,7 +46,10 @@
         style = "bold green";
       };
       nix_shell = {
-        heuristic = if pkgs.stdenv.isDarwin then false else true;
+        heuristic =
+          if pkgs.stdenv.isDarwin
+          then false
+          else true;
       };
       direnv = {
         disabled = false;

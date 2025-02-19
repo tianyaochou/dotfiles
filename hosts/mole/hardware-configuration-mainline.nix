@@ -1,6 +1,11 @@
-{ self, ... }:
-{ config, lib, pkgs, inputs, ... }: 
-let kernel = pkgs.linuxKernel.kernels.linux_6_11;
+{self, ...}: {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  ...
+}: let
+  kernel = pkgs.linuxKernel.kernels.linux_6_11;
 in {
   boot = {
     kernelPackages = pkgs.linuxPackagesFor kernel;

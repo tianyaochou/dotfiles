@@ -32,12 +32,10 @@
   libgcrypt,
   sqlite,
   argp-standalone,
-
   stateDir ? "/var",
   storeDir ? "/gnu/store",
   confDir ? "/etc",
 }:
-
 stdenv.mkDerivation rec {
   pname = "guix";
   version = "1.4.0";

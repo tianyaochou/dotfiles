@@ -1,10 +1,13 @@
-{ super, ... }:
-{ config, pkgs, profiles, users, ... }:
-let 
+{super, ...}: {
+  config,
+  pkgs,
+  profiles,
+  users,
+  ...
+}: let
   hostName = super.meta.hostname;
-in
-{
-  imports = with profiles; [ darwin nix utils sops ];
+in {
+  imports = with profiles; [darwin nix utils sops];
   programs.fish.enable = true;
   # environment.shells = with pkgs; [ fish ];
 

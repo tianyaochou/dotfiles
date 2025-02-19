@@ -1,5 +1,9 @@
-{ self, flake, deploy, ... }:
 {
+  self,
+  flake,
+  deploy,
+  ...
+}: {
   hostname = "mainframe";
   address = [];
   system = "x86_64-linux";

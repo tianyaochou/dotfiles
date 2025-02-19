@@ -11,7 +11,6 @@
   bash-completion,
   darwin,
 }:
-
 stdenv.mkDerivation (finalAttrs: {
   pname = "tio";
   version = "3.6";
@@ -25,11 +24,13 @@ stdenv.mkDerivation (finalAttrs: {
 
   strictDeps = true;
 
-  buildInputs = [
-    inih
-    lua
-    glib
-  ] ++ lib.optionals (stdenv.hostPlatform.isDarwin) [ darwin.apple_sdk.frameworks.IOKit ];
+  buildInputs =
+    [
+      inih
+      lua
+      glib
+    ]
+    ++ lib.optionals (stdenv.hostPlatform.isDarwin) [darwin.apple_sdk.frameworks.IOKit];
 
   nativeBuildInputs = [
     meson

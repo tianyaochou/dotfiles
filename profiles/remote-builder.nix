@@ -1,5 +1,4 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   users.users.remote-builder = {
     isNormalUser = false;
     isSystemUser = true;
@@ -16,5 +15,5 @@
 
   users.groups.remote-builder = {};
 
-  nix.settings.trusted-users = [ "remote-builder" ];
+  nix.settings.trusted-users = ["remote-builder"];
 }
