@@ -8,4 +8,5 @@
   usbutils = pkgs.callPackage ./usbutils.nix {};
   v4l-utils = pkgs.callPackage ./v4l-utils.nix {};
   snps-hdmirx = pkgs.callPackage ./snps-hdmirx.nix {};
+  guix = pkgs.callPackage ./guix.nix {};
 }

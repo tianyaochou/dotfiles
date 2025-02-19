@@ -1,10 +1,8 @@
-{ self, config, lib, pkgs, ... }:
+{ config, lib, pkgs, packages, ... }:
 
 let
-  inherit (lib) fileContents;
   inherit (pkgs.stdenv.hostPlatform) isDarwin isLinux;
 in
-
 {
   # Sets nrdxp.cachix.org binary cache which just speeds up some builds
 
@@ -39,7 +37,9 @@ in
       iputils
       usbutils
       utillinux
-    ] else []);
+    ] else []) ++ (with packages; [
+      deploy-rs
+    ]);
 
     shellAliases =
       let

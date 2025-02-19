@@ -1,4 +1,4 @@
-{ config, inputs, lib, withSystem, getSystem, ... }:
+{ config, self, inputs, lib, withSystem, getSystem, ... }:
 let
   inherit (builtins) mapAttrs concatMap listToAttrs concatLists elemAt attrNames filter;
   inherit (lib) mapAttrsToList filterAttrs;
@@ -9,13 +9,13 @@ let
   mkHostConfiguration = hostname: body: mods:
       let meta = body.meta; in
       withSystem body.meta.system (
-        { system, ... }:
+        { system, self', ... }:
           let mkSystem = if isLinux system then inputs.nixpkgs.lib.nixosSystem else inputs.nix-darwin.lib.darwinSystem;
               sops = if isLinux system then [ inputs.sops-nix.nixosModules.sops ] else [];
           in
           mkSystem {
             system = meta.system;
-            specialArgs = { profiles = config.flake.profiles; users = config.flake.users; inputs = inputs; packages = config.packages; };
+            specialArgs = { profiles = config.flake.profiles; users = config.flake.users; inputs = inputs; packages = self'.packages; };
             modules = sops ++ [
               # nix-path-config
               body.config
@@ -29,7 +29,7 @@ let
       sysconfig = getSystem system;
     in
       inputs.home-manager.lib.homeManagerConfiguration {
-        pkgs = inputs.nixpkgs.legacyPackages.${system};
+        pkgs = if (isLinux system) then inputs.nixpkgs.legacyPackages.${system} else inputs.nixpkgs-darwin.legacyPackages.${system};
         modules = [
           {
             home.username = username;
@@ -43,6 +43,33 @@ let
           profiles = home.profiles;
           packages = sysconfig.packages;
         };
+    };
+  mkDeploy = hostname: host: host-users:
+    let
+      meta = host.meta;
+      system = meta.system;
+      activates = inputs.deploy-rs.lib.${system}.activate;
+    in
+    {
+      hostname = hostname;
+      profiles = {
+        system = {
+          user = "root";
+          interactiveSudo = true;
+          path = if isLinux system then
+                   activates.nixos (config.flake).nixosConfigurations.${hostname}
+                 else
+                   activates.darwin (config.flake).darwinConfigurations.${hostname};
+        };
+      } // listToAttrs
+             (map
+               (username: let profileName = "${username}@${hostname}"; in {
+                  name = profileName;
+                  value = {
+                    path = activates.home-manager (config.flake).homeConfigurations.${profileName};
+                 };
+               })
+               (filter (name: users.${name}.default.hosts.${hostname}.homeProfiles != []) host-users));
     };
   hosts = config.flake.hosts;
   home = config.flake.home;
@@ -81,5 +108,13 @@ in
                 })
               user.default.hosts)
           users));
+
+    deploy = {
+      remoteBuild = true;
+      sshUser = "tianyaochou";
+      nodes = (mapAttrs
+                (hostname: host: mkDeploy hostname host (host-users hostname))
+                hosts);
+    };
   };
 }

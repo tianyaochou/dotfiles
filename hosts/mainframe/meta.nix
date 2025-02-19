@@ -1,4 +1,4 @@
-{ self, ... }:
+{ self, flake, deploy, ... }:
 {
   hostname = "mainframe";
   address = [];

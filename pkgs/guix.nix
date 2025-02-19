@@ -31,6 +31,7 @@
   bzip2,
   libgcrypt,
   sqlite,
+  argp-standalone,
 
   stateDir ? "/var",
   storeDir ? "/gnu/store",
@@ -105,6 +106,7 @@ stdenv.mkDerivation rec {
     po4a
     scheme-bytestructures
     texinfo
+    argp-standalone # HACK: for darwin
   ];
 
   buildInputs = [
@@ -170,6 +172,6 @@ stdenv.mkDerivation rec {
       cafkafk
       foo-dogsquared
     ];
-    platforms = platforms.linux + platforms.darwin;
+    platforms = platforms.linux ++ platforms.darwin;
   };
 }

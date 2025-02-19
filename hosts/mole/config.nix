@@ -1,6 +1,6 @@
-{ self, ... }:
+{ super, ... }:
 { pkgs, profiles, users, ... }: {
-  imports = [ ./hardware-configuration.nix ] ++ (with profiles; [ nixos nix server utils sops blocky jellyfin rsyncd ]);
+  imports = [ super.hardware-configuration ] ++ (with profiles; [ nixos nix server utils sops blocky jellyfin rsyncd ]);
 
   fileSystems."/" = {
     device = "/dev/mmcblk0p2";

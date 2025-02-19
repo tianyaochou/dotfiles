@@ -13,7 +13,7 @@ pkgs.stdenv.mkDerivation {
   modulePath = "drivers/media/platform/synopsys/hdmirx";
 
   patches = [
-    ../hosts/mole/config/hdmirx.patch
+    ../hosts/mole/hdmirx.patch
   ];
 
   configurePhase = ''

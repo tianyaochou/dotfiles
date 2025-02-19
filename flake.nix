@@ -4,6 +4,7 @@
   inputs = {
     # Nixpkgs
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs-darwin.url = "github:nixos/nixpkgs/nixpkgs-24.11-darwin";
     nixpkgs-edge.url = "github:nixos/nixpkgs";
 
     home-manager.url = "github:nix-community/home-manager";
@@ -51,8 +52,10 @@
         ./flake-modules/toplevel-config.nix
       ];
 
-      perSystem = { pkgs, ... }:{
-        packages = import ./pkgs { inherit pkgs; };
+      perSystem = { pkgs, system, ... }:{
+        packages = {
+          deploy-rs = inputs.deploy-rs.packages.${system}.default;
+        } // import ./pkgs { inherit pkgs; };
       };
     };
 }
