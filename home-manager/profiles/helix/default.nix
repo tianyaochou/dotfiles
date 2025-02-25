@@ -2,10 +2,13 @@
   config,
   lib,
   pkgs,
+  pkgs-unstable,
   ...
 }: {
   programs.helix = {
     enable = true;
+    defaultEditor = true;
+    package = pkgs-unstable.helix;
     settings = {
       theme = "monokai";
       editor = {
@@ -33,6 +36,9 @@
           display-messages = true;
         };
         bufferline = "always";
+        inline-diagnostics = {
+          cursor-line = "error";
+        };
       };
       keys = {
         insert = {

@@ -43,6 +43,7 @@ in {
     "amethyst"
     "keybase"
     "jabref"
+    "bike"
 
     "soundsource"
     "macfuse"

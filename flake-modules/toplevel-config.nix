@@ -75,6 +75,7 @@
         user = users.${username}.default;
         profiles = home.profiles;
         packages = sysconfig.packages;
+        pkgs-unstable = inputs.nixpkgs.legacyPackages.${system};
       };
     };
   mkDeploy = hostname: host: host-users: let

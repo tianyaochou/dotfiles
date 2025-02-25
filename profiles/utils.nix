@@ -33,7 +33,7 @@ in {
         skim
         tealdeer
         whois
-        neofetch
+        fastfetch
       ]
       ++ (
         if isLinux
