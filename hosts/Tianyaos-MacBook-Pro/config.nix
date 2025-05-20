@@ -37,13 +37,15 @@ in {
     "skim"
     "dash"
     "vmware-fusion"
-    "motrix"
     "transmit"
     "iterm2"
     "amethyst"
     "keybase"
-    "jabref"
+    "balenaetcher"
     "bike"
+    "pika"
+
+    "squirrel"
 
     "soundsource"
     "macfuse"

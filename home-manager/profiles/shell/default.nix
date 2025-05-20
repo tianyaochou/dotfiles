@@ -53,21 +53,42 @@
       time = {
         disabled = false;
       };
+      custom = {
+        ledger = {
+          command = "if hledger check -s; echo ✅; else; echo ❌; end";
+          detect_extensions = ["journal" "j" "hledger"];
+          symbol = "🧮 ";
+          style = "bold red";
+        };
+      };
     };
   };
 
   programs.zoxide.enable = true;
-  programs.skim.enable = true;
+  programs.skim = {
+    enable = true;
+    defaultOptions = [
+      "--ansi"
+    ];
+    fileWidgetOptions = [
+      "--preview 'bat --color always {}'"
+    ];
+    changeDirWidgetOptions = [
+      "--preview 'eza --tree {} --color always --level 3'"
+    ];
+  };
   programs.nix-index.enable = true;
-  #programs.command-not-found.enable = true;
   programs.direnv = {
     enable = true;
     nix-direnv.enable = true;
   };
   programs.eza = {
     enable = true;
-    enableFishIntegration = true;
     git = true;
+    extraOptions = [
+      "--group-directories-first"
+      "--header"
+    ];
   };
   programs.bat.enable = true;
 }

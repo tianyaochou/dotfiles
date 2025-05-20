@@ -14,6 +14,11 @@
           "https://blocklistproject.github.io/Lists/alt-version/ads-nl.txt"
         ];
       };
+      customDNS = {
+        mapping = {
+          "calibre.mgourd.me" = "100.71.184.86";
+        };
+      };
       prometheus = {
         enable = true;
         path = "/metrics";

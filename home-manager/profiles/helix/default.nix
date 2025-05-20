@@ -5,12 +5,13 @@
   pkgs-unstable,
   ...
 }: {
+  home.packages = with pkgs; [tinymist];
   programs.helix = {
     enable = true;
     defaultEditor = true;
     package = pkgs-unstable.helix;
     settings = {
-      theme = "monokai";
+      theme = "kaolin-light";
       editor = {
         true-color = true;
         line-number = "relative";
@@ -57,12 +58,16 @@
           command = "${pkgs.emmet-language-server}/bin/emmet-language-server";
           args = ["--stdio"];
         };
-        typst-lsp = {
+        tinymist = {
           config = {exportPdf = "never";};
         };
         racket-langserver = {
           command = "racket";
           args = ["-l" "racket-langserver"];
+        };
+        zk = {
+          command = "zk";
+          args = ["lsp"];
         };
       };
       language = [
@@ -77,6 +82,10 @@
         {
           name = "racket";
           language-servers = ["racket-langserver"];
+        }
+        {
+          name = "markdown";
+          language-servers = ["zk"];
         }
       ];
     };

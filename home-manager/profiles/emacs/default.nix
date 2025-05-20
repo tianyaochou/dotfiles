@@ -8,12 +8,12 @@
     languagetool
     (
       if stdenv.isDarwin
-      then emacs29-macport
-      else emacs29-gtk3
+      then emacs
+      else emacs
     )
   ];
 
-  home.file.".doom.d" = {
-    source = ./doom.d;
-  };
+  # home.file.".doom.d" = {
+  #   source = ./doom.d;
+  # };
 }

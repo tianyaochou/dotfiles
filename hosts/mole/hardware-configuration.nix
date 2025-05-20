@@ -20,7 +20,6 @@ in {
 
   boot = {
     kernelPackages = pkgs.linuxPackagesFor selectedKernel;
-    extraModulePackages = [packages.snps-hdmirx];
     loader.grub = {
       device = "nodev";
       efiSupport = true;

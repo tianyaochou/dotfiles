@@ -5,7 +5,7 @@
   packages,
   ...
 }: {
-  imports = with profiles; [shell git restic helix kakoune];
+  imports = with profiles; [shell git restic helix emacs];
 
   home.packages = with pkgs;
     [
@@ -20,6 +20,8 @@
       vscode
 
       nil
+      marksman
+      zk
 
       iosevka-bin
       (iosevka-bin.override {variant = "Slab";})

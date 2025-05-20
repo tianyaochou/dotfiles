@@ -28,4 +28,8 @@
   };
 
   nix.gc.automatic = true;
+
+  programs.tmux = {
+    enable = true;
+  };
 }

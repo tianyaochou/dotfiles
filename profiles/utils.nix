@@ -34,6 +34,12 @@ in {
         tealdeer
         whois
         fastfetch
+
+        hledger
+        hledger-iadd
+        hledger-utils
+        hledger-ui
+        hledger-web
       ]
       ++ (
         if isLinux

@@ -51,5 +51,8 @@
       # delete merged branches
       bdm = "!git branch --merged | grep -v '*' | xargs -n 1 git branch -d";
     };
+    delta = {
+      enable = true;
+    };
   };
 }

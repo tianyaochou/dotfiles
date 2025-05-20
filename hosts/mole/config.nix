@@ -17,6 +17,7 @@
 
   networking.hostName = "mole";
   networking.networkmanager.enable = true;
+  networking.firewall.trustedInterfaces = ["enP3p49s0"];
 
   boot.kernel.sysctl = {
     "net.ipv4.conf.all.forwarding" = true;

@@ -3,11 +3,13 @@
 
   services.caddy = {
     enable = true;
-    virtualHosts.rss = {
-      hostName = "rss.mgourd.me";
-      extraConfig = ''
-        reverse_proxy :8080
-      '';
+    virtualHosts = {
+      rss = {
+        hostName = "rss.mgourd.me";
+        extraConfig = ''
+          reverse_proxy :8080
+        '';
+      };
     };
   };
 }
