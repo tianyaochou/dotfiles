@@ -3564,7 +3564,7 @@ index 000000000000..c55c403cdb9f
 +void snps_hdmirx_cec_unregister(struct hdmirx_cec *cec);
 +
 +#endif /* DW_HDMI_RX_CEC_H */
--- 
+--
 2.48.1
 
-   
+

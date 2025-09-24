@@ -16,7 +16,7 @@ index b83ea0db4fba..0673c0147c46 100644
 @@ -296,6 +296,18 @@ hdmi0_out_con: endpoint {
  	};
  };
- 
+
 +&hdmi_receiver_cma {
 +	status = "okay";
 +};
@@ -34,7 +34,7 @@ index b83ea0db4fba..0673c0147c46 100644
  };
 @@ -460,6 +472,12 @@ &pd_gpu {
  };
- 
+
  &pinctrl {
 +	hdmirx {
 +		hdmirx_hpd: hdmirx-5v-detection {

@@ -14,8 +14,8 @@ in {
       usbutils = pkgs.callPackage ./usbutils.nix {};
     };
     packages = {
-      v4l-utils = withSystem lib.platform.linux ({pkgs, ...}: pkgs.callPackage ./v4l-utils.nix {});
-      snps-hdmirx = withSystem lib.platform.linux ({pkgs, ...}: pkgs.callPackage ./snps-hdmirx.nix {});
+      v4l-utils = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./v4l-utils.nix {});
+      snps-hdmirx = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./snps-hdmirx.nix {});
     };
   };
 }
