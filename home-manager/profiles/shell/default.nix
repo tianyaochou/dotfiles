@@ -41,12 +41,6 @@
         symbol = "";
         style = "bold green";
       };
-      nix_shell = {
-        heuristic =
-          if pkgs.stdenv.isDarwin
-          then false
-          else true;
-      };
       direnv = {
         disabled = false;
       };

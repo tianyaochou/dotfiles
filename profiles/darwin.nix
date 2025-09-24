@@ -11,7 +11,7 @@
     ];
 
     shellAliases = {
-      nrb = "darwin-rebuild switch --flake";
+      nrb = "sudo darwin-rebuild switch --flake";
     };
   };
 }

@@ -11,6 +11,8 @@ in {
   programs.fish.enable = true;
   # environment.shells = with pkgs; [ fish ];
 
+  system.primaryUser = "tianyaochou";
+
   # Homebrew
   # system.activationScripts.homebrew.enable = false;
   homebrew.global.brewfile = true;
@@ -18,12 +20,12 @@ in {
   homebrew.onActivation.cleanup = "uninstall";
   homebrew.brews = [
     "lux"
-    "cloudflared"
-    "displayplacer"
+    #    "displayplacer"
   ];
   homebrew.casks = [
-    "telegram"
-    "appcleaner"
+    #    "appcleaner"
+    "pearcleaner"
+    "orion"
     "blockblock"
     "iina"
     "keka"
@@ -31,33 +33,32 @@ in {
     "thingsmacsandboxhelper"
     "shottr"
     "obsidian"
-    "logseq"
     "notion"
     "pdf-expert"
     "skim"
-    "dash"
-    "vmware-fusion"
+    #    "dash"
+    #    "vmware-fusion"
     "transmit"
     "iterm2"
-    "amethyst"
-    "keybase"
     "balenaetcher"
-    "bike"
     "pika"
+    "monitorcontrol"
 
-    "squirrel"
+    "steam"
 
-    "soundsource"
-    "macfuse"
+    "vial"
+    #    "soundsource"
+    #    "macfuse"
 
-    "kicad"
-    "freecad"
-    "racket"
-    "zed"
+    "blender"
+    #    "kicad"
+    #    "freecad"
+    #    "racket"
+    #    "zed"
 
-    "calibre"
-    "discord"
-    "google-chrome"
+    #    "calibre"
+    #    "discord"
+    #    "google-chrome"
   ];
 
   # HACK: This is sloooooooooooowwwww
@@ -74,5 +75,5 @@ in {
 
   # Used for backwards compatibility, please read the changelog before changing.
   # $ darwin-rebuild changelog
-  system.stateVersion = 4;
+  system.stateVersion = 5;
 }

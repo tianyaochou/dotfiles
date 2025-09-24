@@ -21,6 +21,7 @@
           insert = "bar";
           select = "underline";
         };
+        auto-format = true;
         soft-wrap = {
           enable = true;
         };

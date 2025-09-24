@@ -27,6 +27,7 @@
       (iosevka-bin.override {variant = "Slab";})
       (iosevka-bin.override {variant = "Etoile";})
       (iosevka-bin.override {variant = "Aile";})
+      source-han-serif
 
       # Utility
       du-dust # Dist Usage rewritten in rust
@@ -67,6 +68,14 @@
         };
       }
     ];
+  };
+
+  services.home-manager = {
+    autoExpire = {
+      enable = true;
+      frequency = "weekly";
+      timestamp = "-7 days";
+    };
   };
 
   home.stateVersion = "24.11";

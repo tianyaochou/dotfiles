@@ -68,7 +68,7 @@ in {
     };
 
     firmware = [
-      (pkgs.callPackage "${inputs.rk3588}/pkgs/orangepi-firmware" {})
+      # (pkgs.callPackage "${inputs.rk3588}/pkgs/orangepi-firmware" {})
       (pkgs.callPackage "${inputs.rk3588}/pkgs/mali-firmware" {})
     ];
 

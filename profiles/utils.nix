@@ -40,6 +40,8 @@ in {
         hledger-utils
         hledger-ui
         hledger-web
+
+        sing-box
       ]
       ++ (
         if isLinux
