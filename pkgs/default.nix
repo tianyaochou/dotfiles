@@ -7,15 +7,17 @@
 }: let
   lib = inputs.nixpkgs.lib;
 in {
-  flake = {
-    perSystem = {pkgs, ...}: {
+  perSystem = {pkgs, ...}: {
+    packages = {
       iosevka-bin-nf = pkgs.callPackage ./iosevka-bin-nf.nix {};
       iosevka-nf = pkgs.callPackage ./iosevka-nf.nix {};
       usbutils = pkgs.callPackage ./usbutils.nix {};
     };
+  };
+  flake = {
     packages = {
-      v4l-utils = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./v4l-utils.nix {});
-      snps-hdmirx = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./snps-hdmirx.nix {});
+      aarch64-linux.v4l-utils = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./v4l-utils.nix {});
+      aarch64-linux.snps-hdmirx = withSystem "aarch64-linux" ({pkgs, ...}: pkgs.callPackage ./snps-hdmirx.nix {});
     };
   };
 }

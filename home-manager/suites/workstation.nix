@@ -46,16 +46,14 @@
       gef
       tio
 
-      wireshark-qt
-
       haskellPackages.pandoc-crossref
       typst
     ]
     ++ [packages.iosevka-nf];
 
-  programs.git = {
-    userName = user.username;
-    userEmail = user.email;
+  programs.git.settings.user = {
+    name = user.username;
+    email = user.email;
   };
 
   programs.gpg = {

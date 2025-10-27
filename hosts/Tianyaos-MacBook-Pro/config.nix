@@ -58,6 +58,7 @@ in {
     #    "kicad"
     #    "freecad"
     "racket"
+    "rawtherapee"
     #    "zed"
 
     #    "discord"
