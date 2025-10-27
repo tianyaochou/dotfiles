@@ -51,12 +51,15 @@ in {
     #    "macfuse"
 
     "blender"
+    "zotero"
+    "logseq"
+    "busycal"
+    "zoom"
     #    "kicad"
     #    "freecad"
-    #    "racket"
+    "racket"
     #    "zed"
 
-    #    "calibre"
     #    "discord"
     #    "google-chrome"
   ];

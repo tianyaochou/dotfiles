@@ -35,6 +35,8 @@ in {
         whois
         fastfetch
 
+        rclone
+
         hledger
         hledger-iadd
         hledger-utils
