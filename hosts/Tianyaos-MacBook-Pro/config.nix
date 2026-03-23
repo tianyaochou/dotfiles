@@ -61,7 +61,7 @@ in {
     "rawtherapee"
     #    "zed"
 
-    #    "discord"
+    "discord"
     #    "google-chrome"
   ];
 

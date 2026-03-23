@@ -5,7 +5,7 @@ keys:
   - &mainframe age1m60khn2lp2jdcxfnhqslfd4lzeq0waze7whej9ttrd5dw7vn3g0q8saf3k
   - &kaelder age1afaxwpkqkcsd6x2pqk63dxnfh645p5rlh8ldvqvay8wk0a6mwpeqcsuu9k
 creation_rules:
-  - path_regex: hosts/profiles/minio/secrets\.yaml
+  - path_regex: profiles/minio/secrets\.yaml
     key_groups:
     - age:
       - *mainframe
@@ -15,13 +15,13 @@ creation_rules:
     key_groups:
     - pgp:
       - *tianyaochou
-  - path_regex: hosts/profiles/miniflux/secrets\.yaml
+  - path_regex: profiles/miniflux/secrets\.yaml
     key_groups:
     - age:
       - *gateway
       pgp:
       - *tianyaochou
-  - path_regex: hosts/profiles/proxy/config\.yaml
+  - path_regex: profiles/proxy/config\.yaml
     key_groups:
       - age:
         - *mainframe
@@ -31,5 +31,11 @@ creation_rules:
     key_groups:
       - age:
         - *kaelder
+        pgp:
+        - *tianyaochou
+  - path_regex: profiles/caddy/secrets\.yaml
+    key_groups:
+      - age:
+        - *gateway
         pgp:
         - *tianyaochou

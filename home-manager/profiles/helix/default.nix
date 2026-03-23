@@ -11,15 +11,15 @@
     defaultEditor = true;
     package = pkgs-unstable.helix;
     settings = {
-      theme = "kaolin-light";
+      theme = "dracula";
       editor = {
         true-color = true;
         line-number = "relative";
         undercurl = true;
         cursorline = true;
         cursor-shape = {
-          insert = "bar";
-          select = "underline";
+          # insert = "bar"; FIXME: https://github.com/helix-editor/helix/issues/13937 https://github.com/helix-editor/helix/pull/14951
+          # select = "underline";
         };
         auto-format = true;
         soft-wrap = {

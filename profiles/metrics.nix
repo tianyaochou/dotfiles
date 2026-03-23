@@ -22,6 +22,12 @@
           {targets = ["kaelder:8000"];}
         ];
       }
+      {
+        job_name = "authelia";
+        static_configs = [
+          {targets = ["gateway:9959"];}
+        ];
+      }
     ];
   };
 }

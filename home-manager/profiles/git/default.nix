@@ -15,7 +15,7 @@
     settings = {
       pull.rebase = false;
       pull.ff = "only";
-      aliases = {
+      alias = {
         a = "add -p";
         co = "checkout";
         cob = "checkout -b";
@@ -52,8 +52,25 @@
     };
   };
 
-  programs.delta = {
+  programs.difftastic = {
     enable = true;
-    enableGitIntegration = true;
+    git.enable = true;
+    git.diffToolMode = true;
+    options = {
+      display = "inline";
+    };
+  };
+
+  programs.mergiraf.enable = true;
+
+  programs.gh = {
+    enable = true;
+    settings = {};
+    hosts = {
+      "github.com" = {
+        git_protocol = "ssh";
+        user = "tianyaochou";
+      };
+    };
   };
 }

@@ -5,7 +5,7 @@
   packages,
   ...
 }: {
-  imports = with profiles; [shell git restic helix emacs];
+  imports = with profiles; [shell tty git restic helix emacs];
 
   home.packages = with pkgs;
     [
@@ -30,11 +30,10 @@
       source-han-serif
 
       # Utility
-      du-dust # Dist Usage rewritten in rust
+      dust # Dist Usage rewritten in rust
       entr
       ffmpeg
       mat2
-      gh
       pandoc
       yubikey-manager
       ocrmypdf
@@ -42,8 +41,8 @@
       fontconfig
 
       qemu
-      gdb
-      gef
+      # gdb
+      # gef
       tio
 
       haskellPackages.pandoc-crossref

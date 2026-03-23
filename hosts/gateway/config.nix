@@ -5,7 +5,7 @@
   profiles,
   ...
 }: {
-  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder sops miniflux caddy metrics]);
+  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder sops miniflux caddy metrics auth]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -25,6 +25,7 @@
     address = "fe80::1";
     interface = "enp1s0";
   };
+  networking.nameservers = ["1.1.1.1"];
 
   boot.tmp.cleanOnBoot = true;
   zramSwap.enable = true;

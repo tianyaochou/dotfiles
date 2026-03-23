@@ -29,7 +29,5 @@
 
   nix.gc.automatic = true;
 
-  programs.tmux = {
-    enable = true;
-  };
+  environment.enableAllTerminfo = true;
 }

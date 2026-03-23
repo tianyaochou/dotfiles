@@ -5,7 +5,6 @@
 }: {
   home.packages = with pkgs; [
     texlab
-    languagetool
     (
       if stdenv.isDarwin
       then emacs
