@@ -12,6 +12,7 @@ in {
       iosevka-bin-nf = pkgs.callPackage ./iosevka-bin-nf.nix {};
       iosevka-nf = pkgs.callPackage ./iosevka-nf.nix {};
       usbutils = pkgs.callPackage ./usbutils.nix {};
+      helix = pkgs.callPackage ./helix.nix {};
     };
   };
   flake = {

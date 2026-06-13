@@ -1,4 +1,6 @@
 {pkgs, ...}: {
+  imports = [./lldap.nix];
+
   services.authelia.instances = {
     main = {
       enable = true;

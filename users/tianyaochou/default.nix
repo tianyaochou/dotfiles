@@ -8,7 +8,7 @@
   email = "tianyaochou@fastmail.com";
   keyFile = builtins.fetchurl {
     url = "https://github.com/tianyaochou.keys";
-    sha256 = "df4fe57000c2229c4231e96962d5da532ed7de80d84a4cc94a187386d7d668c3";
+    sha256 = "14rf06nqq1jv814ydmnj6h2li1jdk8arilivzzphkx9294311qw7";
   };
 
   hosts = {

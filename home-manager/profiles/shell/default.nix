@@ -2,6 +2,7 @@
   config,
   lib,
   pkgs,
+  inputs,
   ...
 }: {
   home.packages = [pkgs.fish];
@@ -25,6 +26,7 @@
 
     shellInit = ''
       source $HOME/.opam/opam-init/init.fish > /dev/null 2> /dev/null; or true
+      fish_add_path -a /opt/homebrew/bin
     '';
   };
 
@@ -90,4 +92,5 @@
       theme = "Dracula";
     };
   };
+  programs.nix-your-shell.enable = true;
 }

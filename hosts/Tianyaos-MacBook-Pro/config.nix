@@ -8,13 +8,11 @@
   hostName = super.meta.hostname;
 in {
   imports = with profiles; [darwin nix utils sops];
-  programs.fish.enable = true;
   # environment.shells = with pkgs; [ fish ];
 
   system.primaryUser = "tianyaochou";
 
   # Homebrew
-  # system.activationScripts.homebrew.enable = false;
   homebrew.global.brewfile = true;
   homebrew.enable = true;
   homebrew.onActivation.cleanup = "uninstall";
@@ -59,11 +57,24 @@ in {
     #    "freecad"
     "racket"
     "rawtherapee"
-    #    "zed"
+    "affinity"
+    "zed"
+
+    "lm-studio"
 
     "discord"
-    #    "google-chrome"
+    "vivaldi"
   ];
+
+  nix = {
+    linux-builder = {
+      enable = true;
+      ephemeral = true;
+      systems = [
+        "aarch64-linux"
+      ];
+    };
+  };
 
   # HACK: This is sloooooooooooowwwww
   # homebrew.masApps = {

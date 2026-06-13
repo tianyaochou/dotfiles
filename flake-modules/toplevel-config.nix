@@ -73,6 +73,7 @@
         ++ mods;
       extraSpecialArgs = {
         user = users.${username}.default;
+        inputs = inputs;
         profiles = home.profiles;
         packages = sysconfig.packages;
         pkgs-unstable = inputs.nixpkgs.legacyPackages.${system};

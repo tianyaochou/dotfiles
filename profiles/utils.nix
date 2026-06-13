@@ -52,7 +52,7 @@ in {
           gptfdisk
           iputils
           usbutils
-          utillinux
+          util-linux
         ]
         else []
       )

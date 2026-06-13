@@ -61,7 +61,11 @@
     };
   };
 
-  programs.mergiraf.enable = true;
+  programs.mergiraf = {
+    enable = true;
+    enableGitIntegration = true;
+    enableJujutsuIntegration = true;
+  };
 
   programs.gh = {
     enable = true;
@@ -70,6 +74,16 @@
       "github.com" = {
         git_protocol = "ssh";
         user = "tianyaochou";
+      };
+    };
+  };
+
+  programs.jujutsu = {
+    enable = true;
+    settings = {
+      user = {
+        email = "zhou@d3s.mff.cuni.cz";
+        name = "Tianyao Zhou";
       };
     };
   };

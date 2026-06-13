@@ -13,9 +13,11 @@ in {
 
   nixpkgs.config.allowUnfree = true;
 
-  nix.nixPath = [
-    "nixpkgs=${inputs.nixpkgs.outPath}"
-  ];
+  nix.registry = {
+    devenv = {
+      flake = inputs.devenv;
+    };
+  };
 
   nix.distributedBuilds = true;
   nix.buildMachines = let

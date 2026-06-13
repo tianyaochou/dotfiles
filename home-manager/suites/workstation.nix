@@ -5,7 +5,7 @@
   packages,
   ...
 }: {
-  imports = with profiles; [shell tty git restic helix emacs];
+  imports = with profiles; [shell tty git restic helix];
 
   home.packages = with pkgs;
     [
@@ -18,6 +18,9 @@
       stack
 
       vscode
+      devenv
+
+      opencode
 
       nil
       marksman
@@ -73,6 +76,10 @@
       frequency = "weekly";
       timestamp = "-7 days";
     };
+  };
+
+  services.podman = {
+    enable = true;
   };
 
   home.stateVersion = "24.11";

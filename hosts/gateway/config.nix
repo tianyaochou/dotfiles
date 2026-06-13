@@ -5,7 +5,7 @@
   profiles,
   ...
 }: {
-  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder sops miniflux caddy metrics auth]);
+  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder sops miniflux caddy metrics]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
