@@ -24,8 +24,8 @@
     enable = true;
     package =
       (pkgs.caddy.withPlugins {
-        plugins = ["github.com/caddy-dns/cloudflare@v0.2.3"];
-        hash = "sha256-mmkziFzEMBcdnCWCRiT3UyWPNbINbpd3KUJ0NMW632w=";
+        plugins = ["github.com/caddy-dns/cloudflare@v0.2.4"];
+        hash = "sha256-tubXIDCJnO2mvdnPlZclwDhNGaeeYLSt7lnni3+pXDo=";
       }).overrideAttrs
       (old: {
         # Patch token validation regex to accept cfut_/cfat_ tokens (>50 chars).

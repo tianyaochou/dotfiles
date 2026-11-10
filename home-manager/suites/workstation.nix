@@ -17,10 +17,7 @@
       clang
       stack
 
-      vscode
       devenv
-
-      opencode
 
       nil
       marksman

@@ -18,9 +18,11 @@ in {
   homebrew.onActivation.cleanup = "uninstall";
   homebrew.brews = [
     "lux"
+    "pandoc"
     #    "displayplacer"
   ];
   homebrew.casks = [
+    "sfm"
     #    "appcleaner"
     "pearcleaner"
     "orion"
@@ -33,6 +35,7 @@ in {
     "obsidian"
     "notion"
     "pdf-expert"
+    "pdfcraft"
     "skim"
     #    "dash"
     #    "vmware-fusion"
@@ -45,9 +48,12 @@ in {
     "steam"
 
     "vial"
+    "mos"
     #    "soundsource"
     #    "macfuse"
 
+    "vscodium"
+    "deepseek-harness"
     "blender"
     "zotero"
     "logseq"
@@ -59,8 +65,6 @@ in {
     "rawtherapee"
     "affinity"
     "zed"
-
-    "lm-studio"
 
     "discord"
     "vivaldi"

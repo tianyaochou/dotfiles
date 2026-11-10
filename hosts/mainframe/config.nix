@@ -1,5 +1,5 @@
 {super, ...}: {profiles, ...}: {
-  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder utils sops graphical virtualisation dual-boot]);
+  imports = [./hardware-configuration.nix] ++ (with profiles; [nixos nix server remote-builder utils sops graphical dual-boot]);
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
